@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Proyek Sains Data A - 2&nbsp; Prediksi Audio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Pycaret.html" rel="next">
+<link href="./Prediksi Hepatitis C.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_audio.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">**Prediksi Audio**</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Proyek Sains Data A</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Prediksi Hepatitis C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>PREDIKSI PENYAKIT HEPATITIS C</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_audio.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Prediksi Audio</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pycaret.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>IMPLEMENTASI PYCARET</strong></span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#penjelasan-dataset" id="toc-penjelasan-dataset" class="nav-link active" data-scroll-target="#penjelasan-dataset"><span class="header-section-number">3</span> <strong>Penjelasan Dataset</strong></a></li>
+  <li><a href="#normalisasi-setelah-split-data-dan-menyimpan-normalisasi-dalam-bentuk-model" id="toc-normalisasi-setelah-split-data-dan-menyimpan-normalisasi-dalam-bentuk-model" class="nav-link" data-scroll-target="#normalisasi-setelah-split-data-dan-menyimpan-normalisasi-dalam-bentuk-model"><span class="header-section-number">4</span> <strong>NORMALISASI SETELAH SPLIT DATA DAN MENYIMPAN NORMALISASI DALAM BENTUK MODEL</strong></a></li>
+  <li><a href="#prepocessing" id="toc-prepocessing" class="nav-link" data-scroll-target="#prepocessing"><span class="header-section-number">5</span> <strong>PREPOCESSING</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Prediksi Audio</strong></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205222700,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:4072,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="6c131b88-03ff-4be5-fb74-76225c458d7b">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pip install librosa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: librosa in /usr/local/lib/python3.10/dist-packages (0.10.1)
+Requirement already satisfied: audioread&gt;=2.1.9 in /usr/local/lib/python3.10/dist-packages (from librosa) (3.0.0)
+Requirement already satisfied: numpy!=1.22.0,!=1.22.1,!=1.22.2,&gt;=1.20.3 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.23.5)
+Requirement already satisfied: scipy&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.11.2)
+Requirement already satisfied: scikit-learn&gt;=0.20.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.2.2)
+Requirement already satisfied: joblib&gt;=0.14 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.3.2)
+Requirement already satisfied: decorator&gt;=4.3.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (4.4.2)
+Requirement already satisfied: numba&gt;=0.51.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (0.56.4)
+Requirement already satisfied: soundfile&gt;=0.12.1 in /usr/local/lib/python3.10/dist-packages (from librosa) (0.12.1)
+Requirement already satisfied: pooch&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.7.0)
+Requirement already satisfied: soxr&gt;=0.3.2 in /usr/local/lib/python3.10/dist-packages (from librosa) (0.3.6)
+Requirement already satisfied: typing-extensions&gt;=4.1.1 in /usr/local/lib/python3.10/dist-packages (from librosa) (4.5.0)
+Requirement already satisfied: lazy-loader&gt;=0.1 in /usr/local/lib/python3.10/dist-packages (from librosa) (0.3)
+Requirement already satisfied: msgpack&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from librosa) (1.0.5)
+Requirement already satisfied: llvmlite&lt;0.40,&gt;=0.39.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba&gt;=0.51.0-&gt;librosa) (0.39.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.10/dist-packages (from numba&gt;=0.51.0-&gt;librosa) (67.7.2)
+Requirement already satisfied: platformdirs&gt;=2.5.0 in /usr/local/lib/python3.10/dist-packages (from pooch&gt;=1.0-&gt;librosa) (3.10.0)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from pooch&gt;=1.0-&gt;librosa) (23.1)
+Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.10/dist-packages (from pooch&gt;=1.0-&gt;librosa) (2.31.0)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn&gt;=0.20.0-&gt;librosa) (3.2.0)
+Requirement already satisfied: cffi&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from soundfile&gt;=0.12.1-&gt;librosa) (1.15.1)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0-&gt;soundfile&gt;=0.12.1-&gt;librosa) (2.21)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.0-&gt;librosa) (3.2.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.0-&gt;librosa) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.0-&gt;librosa) (2.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.0-&gt;librosa) (2023.7.22)</code></pre>
+</div>
+</div>
+<section id="penjelasan-dataset" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Penjelasan Dataset</strong></h1>
+<p>Dataset audio ini diambil dari kaggle. Terdapat 200 kata target yang diucapkan dalam frasa oleh dua aktris (berusia 26 dan 64 tahun). Rekaman dibuat dari set tersebut yang menggambarkan tujuh emosi (marah, jijik, takut, bahagia, kejutan, menyenangkan, kesedian dan netral).</p>
+<p>Dataset ini terdiri dari 2746 data dengan 14 kelas dimana dua aktor merekan masing-masing 7 emosi.</p>
+<p>##<strong>Fitur-Fitur</strong>## Pada dataset ini perhitungan statistika dimasukkan kedalam fitur, dimana fitur terdiri sebanyak 10 fitur yaitu:</p>
+<ul>
+<li>zcr_mean</li>
+<li>zcr_median</li>
+<li>zcr_std_dev</li>
+<li>zcr_kurtosis</li>
+<li>zcr_skew</li>
+<li>rmse</li>
+<li>rmse_median</li>
+<li>rmse_std_dev</li>
+<li>rmse_kurtosis</li>
+<li>rmse_skew</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205247528,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:19594,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="cbd854cf-b1b0-4f9e-b13d-119ee7b66321">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mounted at /content/drive</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205260584,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:1022,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="e24028f1-96d2-4ece-dfd4-6631b25bb213">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>My Drive<span class="op">/</span>KULIAH<span class="op">/</span>SEMESTER <span class="dv">5</span><span class="op">/</span>PSD<span class="op">/</span>pertemuan4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/content/drive/My Drive/KULIAH/SEMESTER 5/PSD/pertemuan4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Library</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> librosa</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> skew, kurtosis, mode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>folders<span class="op">=</span>[<span class="st">'YAF_sad'</span>,<span class="st">'YAF_pleasant_surprised'</span>,<span class="st">'YAF_neutral'</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">'YAF_happy'</span>,<span class="st">'YAF_fear'</span>,<span class="st">'YAF_disgust'</span>,<span class="st">'YAF_angry'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">'OAF_Sad'</span>,<span class="st">'OAF_Pleasant_surprise'</span>,<span class="st">'OAF_neutral'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">'OAF_happy'</span>,<span class="st">'OAF_Fear'</span>,<span class="st">'OAF_disgust'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">'OAF_angry'</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>         ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_statistics(audio_path):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    y, sr <span class="op">=</span> librosa.load(audio_path)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UNTUK MENGHITUNG NILAI STATISTIKA</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    mean <span class="op">=</span> np.mean(y)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    std_dev <span class="op">=</span> np.std(y)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    max_value <span class="op">=</span> np.<span class="bu">max</span>(y)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    min_value <span class="op">=</span> np.<span class="bu">min</span>(y)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    median <span class="op">=</span> np.median(y)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    skewness <span class="op">=</span> skew(y)  <span class="co"># Calculate skewness</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    kurt <span class="op">=</span> kurtosis(y)  <span class="co"># Calculate kurtosis</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> np.percentile(y, <span class="dv">25</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> np.percentile(y, <span class="dv">75</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    mode_value, _ <span class="op">=</span> mode(y)  <span class="co"># Calculate mode</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    iqr <span class="op">=</span> q3 <span class="op">-</span> q1</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UNTUK MENGHITUNG NILAI ZCR</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    zcr_mean <span class="op">=</span> np.mean(librosa.feature.zero_crossing_rate(y<span class="op">=</span>y))</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    zcr_median <span class="op">=</span> np.median(librosa.feature.zero_crossing_rate(y<span class="op">=</span>y))</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    zcr_std_dev <span class="op">=</span> np.std(librosa.feature.zero_crossing_rate(y<span class="op">=</span>y))</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    zcr_kurtosis <span class="op">=</span> kurtosis(librosa.feature.zero_crossing_rate(y<span class="op">=</span>y)[<span class="dv">0</span>])</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    zcr_skew <span class="op">=</span> skew(librosa.feature.zero_crossing_rate(y<span class="op">=</span>y)[<span class="dv">0</span>])</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UNTUK MENGHITUNG NILAI RMSE</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    rmse <span class="op">=</span> np.<span class="bu">sum</span>(y<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> <span class="bu">len</span>(y)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    rmse_median <span class="op">=</span> np.median(y<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    rmse_std_dev <span class="op">=</span> np.std(y<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    rmse_kurtosis <span class="op">=</span> kurtosis(y<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    rmse_skew <span class="op">=</span> skew(y<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [zcr_mean, zcr_median, zcr_std_dev, zcr_kurtosis, zcr_skew, rmse, rmse_median, rmse_std_dev, rmse_kurtosis, rmse_skew]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span>[]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> folder <span class="kw">in</span> folders:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    folder_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>folder<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> os.listdir(folder_path):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> filename.endswith(<span class="st">'.wav'</span>):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            audio_path <span class="op">=</span> os.path.join(folder_path, filename)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            statistics <span class="op">=</span> calculate_statistics(audio_path)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            features.append([folder, filename] <span class="op">+</span> statistics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Membuat DataFrame dari data</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span>  [<span class="st">'Label'</span>, <span class="st">'File'</span>] <span class="op">+</span> [<span class="st">'ZCR Mean'</span>, <span class="st">'ZCR Median'</span>, <span class="st">'ZCR Std Dev'</span>, <span class="st">'ZCR Kurtosis'</span>, <span class="st">'ZCR Skew'</span>, <span class="st">'RMSE'</span>, <span class="st">'RMSE Median'</span>, <span class="st">'RMSE Std Dev'</span>, <span class="st">'RMSE Kurtosis'</span>, <span class="st">'RMSE Skew'</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(features, columns<span class="op">=</span>columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205373902,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:5,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="81170590-31fd-4911-8f25-72f132c31fad">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan file CSV</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+  <div id="df-ec9da604-44ba-4010-b1e0-97dde15e139e" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Label</th>
+<th data-quarto-table-cell-role="th">File</th>
+<th data-quarto-table-cell-role="th">ZCR Mean</th>
+<th data-quarto-table-cell-role="th">ZCR Median</th>
+<th data-quarto-table-cell-role="th">ZCR Std Dev</th>
+<th data-quarto-table-cell-role="th">ZCR Kurtosis</th>
+<th data-quarto-table-cell-role="th">ZCR Skew</th>
+<th data-quarto-table-cell-role="th">RMSE</th>
+<th data-quarto-table-cell-role="th">RMSE Median</th>
+<th data-quarto-table-cell-role="th">RMSE Std Dev</th>
+<th data-quarto-table-cell-role="th">RMSE Kurtosis</th>
+<th data-quarto-table-cell-role="th">RMSE Skew</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>YAF_sad</td>
+<td>YAF_beg_sad.wav</td>
+<td>0.121897</td>
+<td>0.035156</td>
+<td>0.198263</td>
+<td>4.352002</td>
+<td>2.371458</td>
+<td>0.001920</td>
+<td>0.000331</td>
+<td>0.004164</td>
+<td>21.918822</td>
+<td>4.057591</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>YAF_sad</td>
+<td>YAF_burn_sad.wav</td>
+<td>0.127930</td>
+<td>0.040039</td>
+<td>0.217361</td>
+<td>3.388307</td>
+<td>2.236480</td>
+<td>0.001015</td>
+<td>0.000207</td>
+<td>0.002208</td>
+<td>26.828295</td>
+<td>4.544021</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>YAF_sad</td>
+<td>YAF_goose_sad.wav</td>
+<td>0.182617</td>
+<td>0.046875</td>
+<td>0.245189</td>
+<td>0.037876</td>
+<td>1.320627</td>
+<td>0.002526</td>
+<td>0.000275</td>
+<td>0.005935</td>
+<td>28.021587</td>
+<td>4.589746</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>YAF_sad</td>
+<td>YAF_half_sad.wav</td>
+<td>0.154048</td>
+<td>0.043457</td>
+<td>0.223328</td>
+<td>2.489344</td>
+<td>1.950159</td>
+<td>0.001695</td>
+<td>0.000289</td>
+<td>0.003559</td>
+<td>17.648011</td>
+<td>3.782496</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>YAF_sad</td>
+<td>YAF_life_sad.wav</td>
+<td>0.163104</td>
+<td>0.050293</td>
+<td>0.226690</td>
+<td>1.487886</td>
+<td>1.675124</td>
+<td>0.001329</td>
+<td>0.000175</td>
+<td>0.003016</td>
+<td>22.303072</td>
+<td>4.186498</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2741</td>
+<td>OAF_angry</td>
+<td>OAF_mode_angry.wav</td>
+<td>0.075516</td>
+<td>0.051758</td>
+<td>0.089479</td>
+<td>8.418145</td>
+<td>3.002345</td>
+<td>0.003077</td>
+<td>0.000586</td>
+<td>0.005649</td>
+<td>12.084702</td>
+<td>3.111976</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2742</td>
+<td>OAF_angry</td>
+<td>OAF_ring_angry.wav</td>
+<td>0.094697</td>
+<td>0.056396</td>
+<td>0.107352</td>
+<td>5.221058</td>
+<td>2.478790</td>
+<td>0.002132</td>
+<td>0.000213</td>
+<td>0.005919</td>
+<td>44.612881</td>
+<td>5.749155</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2743</td>
+<td>OAF_angry</td>
+<td>OAF_road_angry.wav</td>
+<td>0.081608</td>
+<td>0.049316</td>
+<td>0.105220</td>
+<td>6.904714</td>
+<td>2.821720</td>
+<td>0.002464</td>
+<td>0.000332</td>
+<td>0.004899</td>
+<td>18.967567</td>
+<td>3.647299</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2744</td>
+<td>OAF_angry</td>
+<td>OAF_long_angry.wav</td>
+<td>0.086725</td>
+<td>0.049316</td>
+<td>0.115976</td>
+<td>4.901139</td>
+<td>2.475266</td>
+<td>0.002092</td>
+<td>0.000170</td>
+<td>0.004696</td>
+<td>24.984381</td>
+<td>4.180226</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2745</td>
+<td>OAF_angry</td>
+<td>OAF_match_angry.wav</td>
+<td>0.109449</td>
+<td>0.084473</td>
+<td>0.095373</td>
+<td>1.956955</td>
+<td>1.531248</td>
+<td>0.001683</td>
+<td>0.000082</td>
+<td>0.005082</td>
+<td>41.601055</td>
+<td>5.605835</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>2746 rows × 12 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ec9da604-44ba-4010-b1e0-97dde15e139e')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ec9da604-44ba-4010-b1e0-97dde15e139e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ec9da604-44ba-4010-b1e0-97dde15e139e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-5119a962-1e58-4214-bde0-149048181e85">
+  <button class="colab-df-quickchart" onclick="quickchart('df-5119a962-1e58-4214-bde0-149048181e85')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-5119a962-1e58-4214-bde0-149048181e85 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'Audiofeatures.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normalisasi-setelah-split-data-dan-menyimpan-normalisasi-dalam-bentuk-model" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>NORMALISASI SETELAH SPLIT DATA DAN MENYIMPAN NORMALISASI DALAM BENTUK MODEL</strong></h1>
+<p>normalisasi bisa dilakukan sebelum atau sesudah split data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pickle <span class="im">import</span> dump</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696211952660,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:400,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="5e69f5c2-d1b6-457d-fe4f-f29eb00e7f1f">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Baca data dari file CSV</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dataknn<span class="op">=</span> pd.read_csv(<span class="st">'Audiofeatures.csv'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pisahkan fitur (X) dan label (y)</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dataknn.drop([<span class="st">'Label'</span>,<span class="st">'File'</span>], axis<span class="op">=</span><span class="dv">1</span>)  <span class="co"># Ganti 'target_column' dengan nama kolom target</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dataknn[<span class="st">'Label'</span>]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># split data into train and test sets</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>X_train,X_test,y_train, y_test<span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">1</span>, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># define scaler</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># fit scaler on the training dataset</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>scaler.fit(X_train)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># save the scaler</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>dump(scaler, <span class="bu">open</span>(<span class="st">'scaler.pkl'</span>, <span class="st">'wb'</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># transform the training dataset</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.transform(X_train)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>dataknn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+
+  <div id="df-f208961b-f822-445a-88e6-3a6484542c20" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Label</th>
+<th data-quarto-table-cell-role="th">File</th>
+<th data-quarto-table-cell-role="th">ZCR Mean</th>
+<th data-quarto-table-cell-role="th">ZCR Median</th>
+<th data-quarto-table-cell-role="th">ZCR Std Dev</th>
+<th data-quarto-table-cell-role="th">ZCR Kurtosis</th>
+<th data-quarto-table-cell-role="th">ZCR Skew</th>
+<th data-quarto-table-cell-role="th">RMSE</th>
+<th data-quarto-table-cell-role="th">RMSE Median</th>
+<th data-quarto-table-cell-role="th">RMSE Std Dev</th>
+<th data-quarto-table-cell-role="th">RMSE Kurtosis</th>
+<th data-quarto-table-cell-role="th">RMSE Skew</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>YAF_sad</td>
+<td>YAF_beg_sad.wav</td>
+<td>0.121897</td>
+<td>0.035156</td>
+<td>0.198263</td>
+<td>4.352002</td>
+<td>2.371458</td>
+<td>0.001920</td>
+<td>0.000331</td>
+<td>0.004164</td>
+<td>21.918822</td>
+<td>4.057591</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>YAF_sad</td>
+<td>YAF_burn_sad.wav</td>
+<td>0.127930</td>
+<td>0.040039</td>
+<td>0.217361</td>
+<td>3.388307</td>
+<td>2.236480</td>
+<td>0.001015</td>
+<td>0.000207</td>
+<td>0.002208</td>
+<td>26.828295</td>
+<td>4.544021</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>YAF_sad</td>
+<td>YAF_goose_sad.wav</td>
+<td>0.182617</td>
+<td>0.046875</td>
+<td>0.245189</td>
+<td>0.037876</td>
+<td>1.320627</td>
+<td>0.002526</td>
+<td>0.000275</td>
+<td>0.005935</td>
+<td>28.021587</td>
+<td>4.589746</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>YAF_sad</td>
+<td>YAF_half_sad.wav</td>
+<td>0.154048</td>
+<td>0.043457</td>
+<td>0.223328</td>
+<td>2.489344</td>
+<td>1.950159</td>
+<td>0.001695</td>
+<td>0.000289</td>
+<td>0.003559</td>
+<td>17.648011</td>
+<td>3.782496</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>YAF_sad</td>
+<td>YAF_life_sad.wav</td>
+<td>0.163104</td>
+<td>0.050293</td>
+<td>0.226690</td>
+<td>1.487886</td>
+<td>1.675124</td>
+<td>0.001329</td>
+<td>0.000175</td>
+<td>0.003016</td>
+<td>22.303072</td>
+<td>4.186498</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2510</td>
+<td>OAF_disgust</td>
+<td>OAF_kick_disgust.wav</td>
+<td>0.113391</td>
+<td>0.046387</td>
+<td>0.150451</td>
+<td>3.033147</td>
+<td>2.044257</td>
+<td>0.000351</td>
+<td>0.000035</td>
+<td>0.000966</td>
+<td>62.381365</td>
+<td>6.659073</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2511</td>
+<td>OAF_disgust</td>
+<td>OAF_kill_disgust.wav</td>
+<td>0.115483</td>
+<td>0.047363</td>
+<td>0.151113</td>
+<td>1.710510</td>
+<td>1.779791</td>
+<td>0.000479</td>
+<td>0.000027</td>
+<td>0.001334</td>
+<td>47.228274</td>
+<td>5.708675</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2512</td>
+<td>OAF_disgust</td>
+<td>OAF_kite_disgust.wav</td>
+<td>0.098432</td>
+<td>0.042969</td>
+<td>0.152499</td>
+<td>3.812595</td>
+<td>2.320059</td>
+<td>0.000510</td>
+<td>0.000052</td>
+<td>0.001545</td>
+<td>49.780703</td>
+<td>6.063374</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2513</td>
+<td>OAF_disgust</td>
+<td>OAF_late_disgust.wav</td>
+<td>0.112104</td>
+<td>0.041504</td>
+<td>0.169584</td>
+<td>2.156264</td>
+<td>1.978763</td>
+<td>0.000756</td>
+<td>0.000099</td>
+<td>0.002070</td>
+<td>47.116925</td>
+<td>5.953246</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2514</td>
+<td>OAF_disgust</td>
+<td>OAF_knock_disgust.wav</td>
+<td>0.099577</td>
+<td>0.042236</td>
+<td>0.151915</td>
+<td>3.670999</td>
+<td>2.270283</td>
+<td>0.000354</td>
+<td>0.000042</td>
+<td>0.001030</td>
+<td>53.066513</td>
+<td>6.145442</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>2515 rows × 12 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f208961b-f822-445a-88e6-3a6484542c20')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-f208961b-f822-445a-88e6-3a6484542c20 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-f208961b-f822-445a-88e6-3a6484542c20');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-785ce151-7ddd-4a61-9a4d-df98d980860a">
+  <button class="colab-df-quickchart" onclick="quickchart('df-785ce151-7ddd-4a61-9a4d-df98d980860a')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-785ce151-7ddd-4a61-9a4d-df98d980860a button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205426902,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:356,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="105ed743-e20a-44d3-a7ad-22e115ac5030">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_test.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>(503, 10)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'scaler.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> standarisasi:</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    loadscal<span class="op">=</span> pickle.load(standarisasi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>X_test_scaled<span class="op">=</span>loadscal.transform(X_test) <span class="co">#normalisasi X testing dari hasil normalisasi X train yang disimpan dalam model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205451478,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:377,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="e5a123d0-707d-44fc-bf2f-af8870df48af">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> np.zeros((K<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,K,<span class="dv">2</span>):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    knn <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span> n, metric <span class="op">=</span> <span class="st">"euclidean"</span>).fit(X_train_scaled, y_train)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> knn.predict(X_test_scaled)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    acc[n<span class="op">-</span><span class="dv">1</span>]<span class="op">=</span> accuracy_score(y_test,y_pred)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'akurasi terbaik adalah '</span>, acc.<span class="bu">max</span>(), <span class="st">'dengan nilai k ='</span>, acc.argmax()<span class="op">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>akurasi terbaik adalah  0.7296222664015904 dengan nilai k = 7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span> <span class="dv">13</span>, metric <span class="op">=</span> <span class="st">"euclidean"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>dump(knn, <span class="bu">open</span>(<span class="st">'modelknn.pkl'</span>, <span class="st">'wb'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#array=np.array([0.1722103851,0.0419921875,0.2303348292,1.158274856,1.556415655,0.001505466753,0.00024307908,0.0033376536,24.95338147,4.40281652])</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#arnorm=loadscal.transform(array)</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#arnorm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205465826,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:390,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="dfada7b7-e2bb-4051-b2aa-0a21209975ba">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'modelknn.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> knn:</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    loadknn<span class="op">=</span> pickle.load(knn)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>loadknn.fit(X_train_scaled, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier(metric='euclidean', n_neighbors=13)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier(metric='euclidean', n_neighbors=13)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205469724,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:514,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="53c0b355-7b8c-4e52-b04e-341f16fa9611">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> loadknn.predict(X_test_scaled)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>array(['YAF_happy', 'OAF_neutral', 'YAF_angry', 'OAF_neutral',
+       'OAF_happy', 'OAF_neutral', 'OAF_Sad', 'OAF_Pleasant_surprise',
+       'OAF_neutral', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_neutral', 'OAF_neutral',
+       'OAF_neutral', 'OAF_Fear', 'YAF_disgust', 'YAF_happy', 'YAF_happy',
+       'YAF_happy', 'OAF_Sad', 'YAF_neutral', 'YAF_fear', 'YAF_happy',
+       'YAF_happy', 'OAF_Sad', 'YAF_neutral', 'OAF_Fear', 'YAF_angry',
+       'YAF_neutral', 'YAF_happy', 'YAF_fear', 'YAF_pleasant_surprised',
+       'OAF_Pleasant_surprise', 'OAF_Sad', 'OAF_neutral', 'YAF_sad',
+       'OAF_Sad', 'YAF_pleasant_surprised', 'YAF_happy', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'OAF_Pleasant_surprise',
+       'OAF_Pleasant_surprise', 'OAF_neutral', 'YAF_fear', 'YAF_disgust',
+       'YAF_angry', 'OAF_Pleasant_surprise', 'YAF_sad', 'YAF_sad',
+       'YAF_angry', 'OAF_Sad', 'OAF_happy', 'YAF_happy', 'OAF_Sad',
+       'YAF_fear', 'OAF_Sad', 'OAF_happy', 'YAF_happy', 'YAF_neutral',
+       'OAF_Fear', 'OAF_Sad', 'YAF_disgust', 'OAF_neutral', 'YAF_disgust',
+       'YAF_happy', 'YAF_angry', 'YAF_pleasant_surprised', 'OAF_happy',
+       'OAF_Fear', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_fear', 'OAF_happy', 'YAF_neutral',
+       'OAF_Pleasant_surprise', 'YAF_happy', 'YAF_pleasant_surprised',
+       'YAF_neutral', 'OAF_neutral', 'OAF_happy', 'YAF_angry',
+       'OAF_Pleasant_surprise', 'YAF_disgust', 'YAF_pleasant_surprised',
+       'OAF_neutral', 'OAF_Sad', 'YAF_pleasant_surprised', 'YAF_neutral',
+       'YAF_fear', 'OAF_neutral', 'OAF_Pleasant_surprise', 'OAF_Sad',
+       'YAF_fear', 'OAF_Sad', 'YAF_disgust', 'YAF_neutral', 'YAF_neutral',
+       'OAF_happy', 'YAF_happy', 'YAF_fear', 'OAF_Fear', 'OAF_happy',
+       'YAF_happy', 'YAF_angry', 'YAF_happy', 'YAF_fear', 'YAF_sad',
+       'YAF_sad', 'YAF_happy', 'OAF_Pleasant_surprise', 'YAF_angry',
+       'OAF_Fear', 'YAF_pleasant_surprised', 'OAF_Sad', 'OAF_happy',
+       'OAF_Sad', 'YAF_sad', 'YAF_disgust', 'OAF_Sad', 'YAF_fear',
+       'YAF_fear', 'YAF_sad', 'OAF_Fear', 'YAF_disgust', 'OAF_happy',
+       'OAF_Sad', 'YAF_pleasant_surprised', 'OAF_Fear', 'YAF_sad',
+       'YAF_neutral', 'YAF_happy', 'YAF_neutral', 'YAF_happy',
+       'OAF_happy', 'YAF_happy', 'YAF_disgust', 'YAF_angry',
+       'OAF_neutral', 'YAF_angry', 'YAF_angry', 'YAF_pleasant_surprised',
+       'OAF_Pleasant_surprise', 'OAF_Fear', 'YAF_fear', 'OAF_neutral',
+       'YAF_sad', 'YAF_neutral', 'YAF_disgust', 'OAF_Pleasant_surprise',
+       'OAF_happy', 'YAF_happy', 'OAF_neutral', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'YAF_neutral', 'YAF_sad', 'OAF_Sad',
+       'OAF_Pleasant_surprise', 'YAF_pleasant_surprised', 'YAF_angry',
+       'OAF_happy', 'YAF_neutral', 'YAF_happy', 'YAF_neutral',
+       'YAF_disgust', 'OAF_happy', 'YAF_pleasant_surprised', 'YAF_angry',
+       'OAF_Pleasant_surprise', 'YAF_happy', 'OAF_Sad', 'YAF_fear',
+       'YAF_disgust', 'YAF_happy', 'YAF_angry', 'YAF_happy', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_sad', 'OAF_Sad',
+       'YAF_pleasant_surprised', 'YAF_pleasant_surprised',
+       'YAF_pleasant_surprised', 'YAF_sad', 'OAF_happy', 'YAF_sad',
+       'YAF_pleasant_surprised', 'OAF_Sad', 'OAF_Sad', 'OAF_Fear',
+       'OAF_disgust', 'OAF_happy', 'OAF_happy', 'OAF_Fear', 'YAF_happy',
+       'YAF_neutral', 'YAF_disgust', 'OAF_disgust', 'YAF_angry',
+       'OAF_happy', 'OAF_Fear', 'OAF_disgust', 'YAF_sad', 'YAF_angry',
+       'OAF_Fear', 'YAF_happy', 'OAF_neutral', 'OAF_neutral',
+       'OAF_Pleasant_surprise', 'YAF_angry', 'OAF_Sad', 'OAF_happy',
+       'YAF_angry', 'YAF_angry', 'YAF_happy', 'YAF_happy', 'OAF_happy',
+       'YAF_pleasant_surprised', 'OAF_neutral', 'OAF_happy',
+       'OAF_neutral', 'OAF_Pleasant_surprise', 'OAF_neutral', 'YAF_angry',
+       'YAF_sad', 'YAF_neutral', 'YAF_fear', 'OAF_Sad', 'YAF_happy',
+       'OAF_Sad', 'OAF_neutral', 'OAF_neutral', 'OAF_Fear', 'YAF_sad',
+       'YAF_fear', 'OAF_Pleasant_surprise', 'YAF_neutral', 'OAF_Sad',
+       'YAF_sad', 'OAF_Pleasant_surprise', 'YAF_disgust', 'OAF_happy',
+       'OAF_Fear', 'OAF_Pleasant_surprise', 'OAF_Pleasant_surprise',
+       'YAF_neutral', 'OAF_happy', 'OAF_happy', 'YAF_pleasant_surprised',
+       'YAF_neutral', 'YAF_disgust', 'YAF_fear', 'OAF_neutral',
+       'OAF_neutral', 'YAF_neutral', 'OAF_neutral', 'YAF_sad',
+       'YAF_pleasant_surprised', 'OAF_Pleasant_surprise', 'OAF_Fear',
+       'YAF_pleasant_surprised', 'OAF_happy', 'YAF_disgust', 'OAF_Fear',
+       'OAF_Sad', 'OAF_Fear', 'YAF_fear', 'YAF_pleasant_surprised',
+       'YAF_disgust', 'YAF_angry', 'OAF_disgust', 'YAF_happy', 'OAF_Fear',
+       'YAF_sad', 'OAF_Fear', 'YAF_fear', 'YAF_sad', 'YAF_happy',
+       'YAF_happy', 'OAF_neutral', 'YAF_fear', 'YAF_neutral', 'YAF_angry',
+       'OAF_Sad', 'YAF_happy', 'OAF_happy', 'OAF_happy', 'YAF_disgust',
+       'YAF_neutral', 'YAF_disgust', 'YAF_happy',
+       'YAF_pleasant_surprised', 'YAF_neutral', 'OAF_happy', 'YAF_happy',
+       'OAF_neutral', 'YAF_pleasant_surprised', 'YAF_neutral', 'OAF_Sad',
+       'YAF_fear', 'YAF_pleasant_surprised', 'OAF_happy', 'OAF_Sad',
+       'YAF_neutral', 'OAF_Sad', 'OAF_Sad', 'OAF_Sad', 'YAF_fear',
+       'YAF_happy', 'OAF_Sad', 'YAF_happy', 'YAF_disgust',
+       'OAF_Pleasant_surprise', 'OAF_happy', 'YAF_happy', 'YAF_sad',
+       'YAF_angry', 'OAF_neutral', 'YAF_fear', 'YAF_disgust', 'YAF_happy',
+       'YAF_angry', 'YAF_happy', 'OAF_Sad', 'OAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_pleasant_surprised',
+       'OAF_disgust', 'OAF_happy', 'OAF_Sad', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'OAF_happy', 'OAF_Fear', 'YAF_happy',
+       'OAF_Fear', 'OAF_Pleasant_surprise', 'YAF_happy', 'YAF_fear',
+       'OAF_disgust', 'OAF_neutral', 'YAF_angry', 'OAF_Fear',
+       'OAF_neutral', 'OAF_neutral', 'OAF_happy', 'OAF_Pleasant_surprise',
+       'OAF_Sad', 'OAF_Pleasant_surprise', 'OAF_neutral', 'YAF_neutral',
+       'YAF_disgust', 'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_angry',
+       'OAF_Pleasant_surprise', 'OAF_Sad', 'OAF_Pleasant_surprise',
+       'YAF_disgust', 'YAF_angry', 'YAF_disgust', 'OAF_neutral',
+       'YAF_disgust', 'YAF_disgust', 'OAF_neutral', 'YAF_neutral',
+       'YAF_angry', 'YAF_pleasant_surprised', 'OAF_Pleasant_surprise',
+       'YAF_disgust', 'OAF_neutral', 'OAF_happy', 'OAF_happy',
+       'OAF_happy', 'OAF_happy', 'YAF_neutral', 'YAF_pleasant_surprised',
+       'YAF_pleasant_surprised', 'YAF_happy', 'OAF_neutral', 'OAF_Fear',
+       'OAF_neutral', 'YAF_neutral', 'OAF_Fear', 'OAF_happy', 'YAF_happy',
+       'OAF_neutral', 'YAF_disgust', 'OAF_Sad', 'OAF_disgust', 'YAF_sad',
+       'OAF_Fear', 'OAF_Sad', 'OAF_neutral', 'YAF_sad', 'YAF_disgust',
+       'YAF_disgust', 'YAF_neutral', 'YAF_fear', 'YAF_fear', 'YAF_sad',
+       'OAF_Pleasant_surprise', 'OAF_neutral', 'OAF_disgust', 'YAF_sad',
+       'OAF_Fear', 'YAF_sad', 'OAF_Pleasant_surprise', 'OAF_Fear',
+       'OAF_Sad', 'OAF_happy', 'OAF_neutral', 'YAF_disgust', 'YAF_sad',
+       'YAF_neutral', 'YAF_pleasant_surprised', 'OAF_happy',
+       'YAF_disgust', 'YAF_neutral', 'OAF_Pleasant_surprise',
+       'YAF_pleasant_surprised', 'YAF_happy', 'YAF_disgust', 'YAF_happy',
+       'YAF_pleasant_surprised', 'YAF_angry', 'OAF_neutral', 'YAF_happy',
+       'OAF_Fear', 'OAF_neutral', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'YAF_angry', 'YAF_neutral', 'OAF_neutral',
+       'YAF_pleasant_surprised', 'OAF_happy', 'OAF_Fear', 'YAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_happy', 'YAF_neutral',
+       'YAF_pleasant_surprised', 'YAF_neutral', 'YAF_fear',
+       'YAF_pleasant_surprised', 'OAF_happy', 'YAF_angry', 'YAF_neutral',
+       'YAF_disgust', 'OAF_Pleasant_surprise', 'OAF_Sad', 'OAF_neutral',
+       'YAF_happy', 'OAF_happy', 'OAF_Fear', 'YAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_disgust', 'YAF_angry',
+       'YAF_neutral', 'OAF_neutral', 'OAF_Pleasant_surprise', 'OAF_Sad',
+       'OAF_Sad', 'OAF_neutral', 'YAF_angry', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'YAF_pleasant_surprised',
+       'YAF_pleasant_surprised', 'YAF_sad', 'YAF_disgust', 'YAF_happy',
+       'YAF_neutral', 'YAF_pleasant_surprised', 'OAF_happy',
+       'OAF_neutral', 'YAF_fear', 'YAF_angry', 'YAF_angry', 'YAF_angry',
+       'YAF_disgust', 'OAF_neutral', 'OAF_Sad', 'YAF_happy', 'OAF_Sad',
+       'OAF_happy', 'YAF_disgust', 'YAF_pleasant_surprised',
+       'YAF_pleasant_surprised', 'YAF_happy', 'OAF_happy', 'OAF_Fear',
+       'OAF_Sad', 'YAF_neutral', 'YAF_pleasant_surprised', 'OAF_Fear'],
+      dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205474468,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:375,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="13f8c9b4-c57d-41e8-c837-13c78b2a4df7">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test,y_pred)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Akurasi:"</span>,accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi: 0.7117296222664016</code></pre>
+</div>
+</div>
+</section>
+<section id="prepocessing" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <strong>PREPOCESSING</strong></h1>
+<p>pre processing terdiri dari beberapa langkah, 1. normalisasi data(penyamaan nilai data kedalam rentang 0-1) yang bertujuan agar ciri data yang valuenya dalam rentang jutaan atau ribuan tidak merusak komputasi. 2. data cleaning, data cleaning dilakukan jika ada missing value pada ciri atau fitur data, teknik mengisi value dengan cara memasukkan nilai rata2 data kolom atau fitur tersebut.</p>
+<p><strong>REDUKSI DATA</strong></p>
+<p>reduksi ada 2 jenis bisa menggunakan seleksi data atau transformation data(contoh nya PCA / Principal component anlysis). seleksi data kita dapat emmilih fitur berdasarkan yang fitur/ kolom yang paling berpengaruh. sedangkan transformasi data kita perlu membuat kooordinat baru dari dari fitur yang ada sejumlah dengan jumlah fitur nya. mengapa reduksi data atau data reduction di perlukan? karna terlalu banyak kolom/fitur/ciri yang harus dikenali tidak baik untuk pemprosesan data dan memakan waktu komputasi yang lama, maka dari itu reduksi data di lakukan untuk mendapatkan data yang terbaik. ketika ingin mencari koordinat baru: 1. buat matriks covarian 2. buat persamaan</p>
+<p>.</p>
+<p>note : konstanta yang paling besar mengartikan di koordinat tersebut merupakan ciri paling banyak atau penting</p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205618166,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:415,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="763d234b-6352-492a-e646-9738b8dfa8cc">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA <span class="im">as</span> sklearnPCA</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sklearn_pca <span class="op">=</span> sklearnPCA(n_components<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>X_train_pca<span class="op">=</span> sklearn_pca.fit_transform(X_train_scaled)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(X_train_pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>numpy.ndarray</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dump(sklearn_pca, <span class="bu">open</span>(<span class="st">'PCA8.pkl'</span>, <span class="st">'wb'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'PCA8.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> pca:</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    loadpca<span class="op">=</span> pickle.load(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205663304,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:3,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="732ef006-9e80-4257-8cd1-50572f112102">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>X_test_pca<span class="op">=</span>loadpca.transform(X_test_scaled)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>X_test_pca.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>(503, 8)</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205666383,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:372,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="5d31208f-91b6-48b2-dabd-adca74b1a5b6">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>classifier <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>classifier.fit(X_train_pca, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<style>#sk-container-id-4 {color: black;background-color: white;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier(n_neighbors=15)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked=""><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier(n_neighbors=15)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205672174,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:581,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="6130e3f1-298f-4674-9e79-41eb7a9eb736">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>y_prediksi <span class="op">=</span> classifier.predict(X_test_pca)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>y_prediksi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>array(['YAF_happy', 'OAF_neutral', 'YAF_angry', 'OAF_neutral',
+       'OAF_happy', 'OAF_neutral', 'OAF_Sad', 'OAF_Pleasant_surprise',
+       'OAF_neutral', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_neutral', 'OAF_neutral',
+       'OAF_neutral', 'OAF_Fear', 'YAF_disgust', 'YAF_happy', 'YAF_happy',
+       'YAF_happy', 'OAF_Sad', 'YAF_neutral', 'YAF_fear', 'YAF_happy',
+       'YAF_happy', 'OAF_Sad', 'YAF_neutral', 'OAF_Fear', 'YAF_angry',
+       'YAF_neutral', 'YAF_happy', 'YAF_fear', 'YAF_pleasant_surprised',
+       'OAF_Pleasant_surprise', 'OAF_Sad', 'OAF_neutral', 'YAF_sad',
+       'OAF_Sad', 'YAF_pleasant_surprised', 'YAF_happy', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'OAF_Pleasant_surprise',
+       'OAF_Pleasant_surprise', 'OAF_neutral', 'YAF_fear', 'YAF_disgust',
+       'YAF_angry', 'OAF_happy', 'YAF_sad', 'YAF_sad', 'YAF_angry',
+       'OAF_Sad', 'OAF_happy', 'YAF_happy', 'OAF_Sad', 'YAF_fear',
+       'OAF_Sad', 'OAF_happy', 'YAF_happy', 'YAF_neutral', 'OAF_Fear',
+       'OAF_Sad', 'YAF_pleasant_surprised', 'OAF_neutral', 'YAF_disgust',
+       'YAF_happy', 'YAF_angry', 'YAF_pleasant_surprised', 'OAF_happy',
+       'OAF_Fear', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_fear', 'OAF_Fear', 'YAF_neutral',
+       'OAF_Pleasant_surprise', 'YAF_happy', 'YAF_pleasant_surprised',
+       'YAF_neutral', 'OAF_neutral', 'OAF_happy', 'YAF_angry',
+       'OAF_Pleasant_surprise', 'YAF_disgust', 'YAF_pleasant_surprised',
+       'OAF_neutral', 'OAF_Sad', 'YAF_neutral', 'YAF_neutral', 'YAF_fear',
+       'OAF_neutral', 'OAF_Pleasant_surprise', 'OAF_Sad', 'YAF_fear',
+       'OAF_Pleasant_surprise', 'YAF_disgust', 'YAF_neutral',
+       'YAF_neutral', 'OAF_happy', 'YAF_happy', 'YAF_fear', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_happy', 'YAF_angry', 'YAF_happy',
+       'YAF_fear', 'YAF_sad', 'YAF_angry', 'YAF_happy', 'OAF_Fear',
+       'YAF_angry', 'OAF_Fear', 'YAF_pleasant_surprised', 'OAF_Sad',
+       'OAF_happy', 'OAF_Sad', 'YAF_sad', 'YAF_disgust', 'OAF_Sad',
+       'YAF_fear', 'YAF_fear', 'YAF_sad', 'OAF_Fear', 'YAF_disgust',
+       'OAF_happy', 'OAF_Sad', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'YAF_sad', 'YAF_neutral', 'YAF_happy', 'YAF_sad', 'YAF_happy',
+       'OAF_happy', 'YAF_happy', 'YAF_disgust', 'YAF_angry',
+       'OAF_neutral', 'YAF_angry', 'YAF_angry', 'YAF_pleasant_surprised',
+       'OAF_Pleasant_surprise', 'OAF_Fear', 'YAF_fear', 'OAF_neutral',
+       'YAF_sad', 'YAF_neutral', 'YAF_disgust', 'OAF_Pleasant_surprise',
+       'OAF_happy', 'YAF_happy', 'OAF_neutral', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'YAF_neutral', 'YAF_sad', 'OAF_Sad',
+       'OAF_Pleasant_surprise', 'YAF_pleasant_surprised', 'YAF_angry',
+       'OAF_happy', 'YAF_neutral', 'YAF_happy', 'YAF_neutral',
+       'YAF_disgust', 'OAF_happy', 'YAF_pleasant_surprised', 'YAF_angry',
+       'OAF_Pleasant_surprise', 'YAF_happy', 'OAF_Sad', 'YAF_fear',
+       'YAF_disgust', 'YAF_happy', 'YAF_angry', 'YAF_happy', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'YAF_sad', 'OAF_Sad', 'YAF_angry',
+       'YAF_pleasant_surprised', 'YAF_pleasant_surprised', 'YAF_sad',
+       'OAF_happy', 'YAF_sad', 'YAF_pleasant_surprised', 'OAF_Sad',
+       'OAF_Sad', 'OAF_Fear', 'OAF_disgust', 'OAF_disgust', 'OAF_happy',
+       'OAF_Fear', 'YAF_happy', 'YAF_neutral', 'YAF_disgust',
+       'OAF_disgust', 'YAF_angry', 'OAF_happy', 'OAF_Fear', 'OAF_disgust',
+       'YAF_sad', 'YAF_angry', 'OAF_Fear', 'YAF_happy', 'OAF_neutral',
+       'OAF_neutral', 'OAF_Pleasant_surprise', 'YAF_angry', 'OAF_Sad',
+       'OAF_happy', 'YAF_angry', 'YAF_angry', 'YAF_happy', 'YAF_happy',
+       'OAF_Sad', 'YAF_pleasant_surprised', 'OAF_neutral', 'OAF_happy',
+       'OAF_neutral', 'OAF_happy', 'OAF_neutral', 'YAF_angry', 'YAF_sad',
+       'YAF_neutral', 'YAF_fear', 'OAF_happy', 'YAF_happy', 'OAF_Sad',
+       'OAF_neutral', 'OAF_neutral', 'OAF_Fear', 'YAF_sad', 'YAF_fear',
+       'OAF_Pleasant_surprise', 'YAF_neutral', 'OAF_Sad', 'YAF_sad',
+       'OAF_Pleasant_surprise', 'YAF_disgust', 'OAF_happy', 'OAF_Fear',
+       'OAF_Pleasant_surprise', 'OAF_Pleasant_surprise', 'YAF_neutral',
+       'OAF_happy', 'OAF_happy', 'YAF_pleasant_surprised', 'YAF_neutral',
+       'YAF_disgust', 'YAF_fear', 'OAF_neutral', 'OAF_neutral',
+       'YAF_neutral', 'OAF_neutral', 'YAF_sad', 'YAF_pleasant_surprised',
+       'OAF_Pleasant_surprise', 'OAF_Fear', 'YAF_disgust', 'OAF_happy',
+       'YAF_disgust', 'OAF_Fear', 'OAF_Fear', 'OAF_Fear', 'YAF_fear',
+       'YAF_pleasant_surprised', 'YAF_disgust', 'YAF_angry',
+       'OAF_disgust', 'YAF_happy', 'OAF_Fear', 'YAF_sad', 'OAF_Fear',
+       'YAF_fear', 'YAF_sad', 'YAF_happy', 'YAF_happy', 'OAF_neutral',
+       'YAF_pleasant_surprised', 'YAF_neutral', 'YAF_angry', 'OAF_Sad',
+       'YAF_happy', 'OAF_happy', 'OAF_happy', 'YAF_disgust',
+       'YAF_neutral', 'YAF_disgust', 'YAF_happy',
+       'YAF_pleasant_surprised', 'YAF_neutral', 'OAF_Sad', 'YAF_happy',
+       'OAF_neutral', 'YAF_pleasant_surprised', 'YAF_neutral', 'OAF_Sad',
+       'YAF_fear', 'YAF_pleasant_surprised', 'OAF_happy', 'OAF_Sad',
+       'YAF_neutral', 'OAF_Sad', 'OAF_Sad', 'OAF_Sad', 'YAF_fear',
+       'YAF_happy', 'OAF_Sad', 'YAF_happy', 'YAF_disgust',
+       'OAF_Pleasant_surprise', 'OAF_happy', 'YAF_happy', 'YAF_sad',
+       'YAF_angry', 'OAF_neutral', 'YAF_fear', 'YAF_disgust', 'YAF_happy',
+       'YAF_angry', 'YAF_happy', 'OAF_Sad', 'OAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_pleasant_surprised',
+       'OAF_disgust', 'OAF_happy', 'OAF_happy', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'OAF_happy', 'OAF_Fear', 'YAF_happy',
+       'OAF_Fear', 'OAF_Pleasant_surprise', 'YAF_happy', 'YAF_fear',
+       'OAF_disgust', 'OAF_neutral', 'YAF_angry', 'OAF_Fear',
+       'OAF_neutral', 'OAF_neutral', 'OAF_happy', 'OAF_Pleasant_surprise',
+       'OAF_Sad', 'OAF_Pleasant_surprise', 'OAF_neutral', 'YAF_neutral',
+       'YAF_disgust', 'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_angry',
+       'OAF_happy', 'OAF_Sad', 'OAF_Pleasant_surprise', 'YAF_disgust',
+       'YAF_angry', 'YAF_disgust', 'OAF_neutral', 'YAF_disgust',
+       'YAF_disgust', 'OAF_neutral', 'YAF_neutral', 'YAF_angry',
+       'YAF_pleasant_surprised', 'OAF_Pleasant_surprise',
+       'YAF_pleasant_surprised', 'OAF_neutral', 'OAF_happy', 'OAF_happy',
+       'OAF_happy', 'OAF_happy', 'YAF_neutral', 'YAF_pleasant_surprised',
+       'YAF_pleasant_surprised', 'YAF_happy', 'OAF_neutral', 'OAF_Fear',
+       'OAF_neutral', 'YAF_neutral', 'OAF_Fear', 'OAF_happy', 'YAF_happy',
+       'OAF_neutral', 'YAF_disgust', 'OAF_Sad', 'OAF_disgust', 'YAF_sad',
+       'OAF_Fear', 'OAF_Sad', 'OAF_neutral', 'YAF_sad', 'YAF_disgust',
+       'YAF_disgust', 'YAF_neutral', 'YAF_fear', 'YAF_fear', 'YAF_sad',
+       'OAF_Pleasant_surprise', 'OAF_neutral', 'OAF_disgust', 'YAF_sad',
+       'OAF_Fear', 'YAF_sad', 'OAF_Pleasant_surprise', 'OAF_Fear',
+       'OAF_Sad', 'OAF_happy', 'OAF_neutral', 'YAF_disgust', 'YAF_sad',
+       'YAF_neutral', 'YAF_pleasant_surprised', 'OAF_happy',
+       'YAF_disgust', 'YAF_neutral', 'OAF_Pleasant_surprise',
+       'YAF_pleasant_surprised', 'YAF_happy', 'YAF_disgust', 'YAF_happy',
+       'YAF_pleasant_surprised', 'YAF_angry', 'OAF_neutral', 'YAF_happy',
+       'OAF_happy', 'OAF_neutral', 'YAF_pleasant_surprised', 'OAF_Fear',
+       'YAF_angry', 'YAF_neutral', 'OAF_neutral',
+       'YAF_pleasant_surprised', 'OAF_happy', 'OAF_Fear', 'YAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_happy', 'YAF_neutral',
+       'YAF_pleasant_surprised', 'YAF_neutral', 'YAF_fear',
+       'YAF_pleasant_surprised', 'OAF_happy', 'YAF_angry', 'YAF_neutral',
+       'YAF_disgust', 'OAF_Pleasant_surprise', 'OAF_Sad', 'OAF_neutral',
+       'YAF_happy', 'OAF_happy', 'OAF_Fear', 'YAF_disgust',
+       'YAF_pleasant_surprised', 'OAF_Sad', 'YAF_disgust', 'YAF_angry',
+       'YAF_neutral', 'OAF_neutral', 'OAF_Pleasant_surprise', 'OAF_Sad',
+       'OAF_Sad', 'OAF_neutral', 'YAF_angry', 'OAF_happy',
+       'OAF_Pleasant_surprise', 'YAF_pleasant_surprised', 'YAF_disgust',
+       'YAF_sad', 'YAF_disgust', 'YAF_happy', 'YAF_neutral',
+       'YAF_disgust', 'OAF_happy', 'OAF_neutral', 'YAF_fear', 'YAF_angry',
+       'YAF_angry', 'YAF_angry', 'YAF_disgust', 'OAF_neutral', 'OAF_Sad',
+       'YAF_happy', 'OAF_Sad', 'OAF_happy', 'YAF_disgust',
+       'YAF_pleasant_surprised', 'YAF_pleasant_surprised', 'YAF_happy',
+       'OAF_happy', 'OAF_Fear', 'OAF_Sad', 'YAF_neutral',
+       'YAF_pleasant_surprised', 'OAF_Fear'], dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696205683111,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:3,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="315cca5b-aecc-4846-c7a7-da2e32e03c14">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>acc_pca<span class="op">=</span> accuracy_score(y_test,y_prediksi)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Akurasi:"</span>,acc_pca)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Akurasi component 9: 0.7137176938369781</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi: 0.7137176938369781</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Prediksi Hepatitis C.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>PREDIKSI PENYAKIT HEPATITIS C</strong></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Pycaret.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>IMPLEMENTASI PYCARET</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

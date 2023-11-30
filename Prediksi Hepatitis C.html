@@ -1,0 +1,3201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Proyek Sains Data A - 1&nbsp; PREDIKSI PENYAKIT HEPATITIS C</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./data_audio.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Prediksi Hepatitis C.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">**PREDIKSI PENYAKIT HEPATITIS C**</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Proyek Sains Data A</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Prediksi Hepatitis C.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>PREDIKSI PENYAKIT HEPATITIS C</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_audio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Prediksi Audio</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pycaret.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>IMPLEMENTASI PYCARET</strong></span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#bussiness-understanding" id="toc-bussiness-understanding" class="nav-link active" data-scroll-target="#bussiness-understanding"><span class="header-section-number">2</span> <strong>Bussiness Understanding</strong></a></li>
+  <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding"><span class="header-section-number">3</span> <strong>Data Understanding</strong></a></li>
+  <li><a href="#eksplorasi-data" id="toc-eksplorasi-data" class="nav-link" data-scroll-target="#eksplorasi-data"><span class="header-section-number">4</span> <strong>Eksplorasi Data</strong></a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing"><span class="header-section-number">5</span> <strong>Preprocessing</strong></a></li>
+  <li><a href="#modelling" id="toc-modelling" class="nav-link" data-scroll-target="#modelling"><span class="header-section-number">6</span> <strong>Modelling</strong></a></li>
+  <li><a href="#prediksi" id="toc-prediksi" class="nav-link" data-scroll-target="#prediksi"><span class="header-section-number">7</span> <strong>Prediksi</strong></a></li>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment"><span class="header-section-number">8</span> <strong>Deployment</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>PREDIKSI PENYAKIT HEPATITIS C</strong></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Nama: Firdatul A’yuni</p>
+<p>NIM: 210411100144</p>
+<p>Kelas: Proyek Sains Data A</p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700815598835,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:18548,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="2c34a479-7c7b-4daf-e742-5997edaab83c">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mounted at /content/drive</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700815601978,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:1115,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="06c56e75-7860-4e8f-a945-64e99ab275f5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>My Drive<span class="op">/</span>KULIAH<span class="op">/</span>SEMESTER <span class="dv">5</span><span class="op">/</span>PSD<span class="op">/</span>project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/content/drive/My Drive/KULIAH/SEMESTER 5/PSD/project</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700815624185,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:17378,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="6516fd34-11a2-4c38-d18c-e4aa3fa7969c">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pip install streamlit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting streamlit
+  Downloading streamlit-1.28.2-py2.py3-none-any.whl (8.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.4/8.4 MB 16.6 MB/s eta 0:00:00
+Requirement already satisfied: altair&lt;6,&gt;=4.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (4.2.2)
+Requirement already satisfied: blinker&lt;2,&gt;=1.0.0 in /usr/lib/python3/dist-packages (from streamlit) (1.4)
+Requirement already satisfied: cachetools&lt;6,&gt;=4.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (5.3.2)
+Requirement already satisfied: click&lt;9,&gt;=7.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (8.1.7)
+Requirement already satisfied: importlib-metadata&lt;7,&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from streamlit) (6.8.0)
+Requirement already satisfied: numpy&lt;2,&gt;=1.19.3 in /usr/local/lib/python3.10/dist-packages (from streamlit) (1.23.5)
+Requirement already satisfied: packaging&lt;24,&gt;=16.8 in /usr/local/lib/python3.10/dist-packages (from streamlit) (23.2)
+Requirement already satisfied: pandas&lt;3,&gt;=1.3.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (1.5.3)
+Requirement already satisfied: pillow&lt;11,&gt;=7.1.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (9.4.0)
+Requirement already satisfied: protobuf&lt;5,&gt;=3.20 in /usr/local/lib/python3.10/dist-packages (from streamlit) (3.20.3)
+Requirement already satisfied: pyarrow&gt;=6.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (9.0.0)
+Requirement already satisfied: python-dateutil&lt;3,&gt;=2.7.3 in /usr/local/lib/python3.10/dist-packages (from streamlit) (2.8.2)
+Requirement already satisfied: requests&lt;3,&gt;=2.27 in /usr/local/lib/python3.10/dist-packages (from streamlit) (2.31.0)
+Requirement already satisfied: rich&lt;14,&gt;=10.14.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (13.7.0)
+Requirement already satisfied: tenacity&lt;9,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (8.2.3)
+Requirement already satisfied: toml&lt;2,&gt;=0.10.1 in /usr/local/lib/python3.10/dist-packages (from streamlit) (0.10.2)
+Requirement already satisfied: typing-extensions&lt;5,&gt;=4.3.0 in /usr/local/lib/python3.10/dist-packages (from streamlit) (4.5.0)
+Requirement already satisfied: tzlocal&lt;6,&gt;=1.1 in /usr/local/lib/python3.10/dist-packages (from streamlit) (5.2)
+Collecting validators&lt;1,&gt;=0.2 (from streamlit)
+  Downloading validators-0.22.0-py3-none-any.whl (26 kB)
+Collecting gitpython!=3.1.19,&lt;4,&gt;=3.0.7 (from streamlit)
+  Downloading GitPython-3.1.40-py3-none-any.whl (190 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 190.6/190.6 kB 13.8 MB/s eta 0:00:00
+Collecting pydeck&lt;1,&gt;=0.8.0b4 (from streamlit)
+  Downloading pydeck-0.8.1b0-py2.py3-none-any.whl (4.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 27.5 MB/s eta 0:00:00
+Requirement already satisfied: tornado&lt;7,&gt;=6.0.3 in /usr/local/lib/python3.10/dist-packages (from streamlit) (6.3.2)
+Collecting watchdog&gt;=2.1.5 (from streamlit)
+  Downloading watchdog-3.0.0-py3-none-manylinux2014_x86_64.whl (82 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 82.1/82.1 kB 7.0 MB/s eta 0:00:00
+Requirement already satisfied: entrypoints in /usr/local/lib/python3.10/dist-packages (from altair&lt;6,&gt;=4.0-&gt;streamlit) (0.4)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from altair&lt;6,&gt;=4.0-&gt;streamlit) (3.1.2)
+Requirement already satisfied: jsonschema&gt;=3.0 in /usr/local/lib/python3.10/dist-packages (from altair&lt;6,&gt;=4.0-&gt;streamlit) (4.19.2)
+Requirement already satisfied: toolz in /usr/local/lib/python3.10/dist-packages (from altair&lt;6,&gt;=4.0-&gt;streamlit) (0.12.0)
+Collecting gitdb&lt;5,&gt;=4.0.1 (from gitpython!=3.1.19,&lt;4,&gt;=3.0.7-&gt;streamlit)
+  Downloading gitdb-4.0.11-py3-none-any.whl (62 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.7/62.7 kB 4.3 MB/s eta 0:00:00
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from importlib-metadata&lt;7,&gt;=1.4-&gt;streamlit) (3.17.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas&lt;3,&gt;=1.3.0-&gt;streamlit) (2023.3.post1)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&lt;3,&gt;=2.7.3-&gt;streamlit) (1.16.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (2.0.7)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (2023.7.22)
+Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /usr/local/lib/python3.10/dist-packages (from rich&lt;14,&gt;=10.14.0-&gt;streamlit) (3.0.0)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.10/dist-packages (from rich&lt;14,&gt;=10.14.0-&gt;streamlit) (2.16.1)
+Collecting smmap&lt;6,&gt;=3.0.1 (from gitdb&lt;5,&gt;=4.0.1-&gt;gitpython!=3.1.19,&lt;4,&gt;=3.0.7-&gt;streamlit)
+  Downloading smmap-5.0.1-py3-none-any.whl (24 kB)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;altair&lt;6,&gt;=4.0-&gt;streamlit) (2.1.3)
+Requirement already satisfied: attrs&gt;=22.2.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6,&gt;=4.0-&gt;streamlit) (23.1.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6,&gt;=4.0-&gt;streamlit) (2023.11.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6,&gt;=4.0-&gt;streamlit) (0.31.0)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6,&gt;=4.0-&gt;streamlit) (0.13.0)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.10/dist-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&lt;14,&gt;=10.14.0-&gt;streamlit) (0.1.2)
+Installing collected packages: watchdog, validators, smmap, pydeck, gitdb, gitpython, streamlit
+Successfully installed gitdb-4.0.11 gitpython-3.1.40 pydeck-0.8.1b0 smmap-5.0.1 streamlit-1.28.2 validators-0.22.0 watchdog-3.0.0</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700815663061,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:6938,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="b98e9751-f380-4820-9e92-7bddc8935396">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install imbalanced<span class="op">-</span>learn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: imbalanced-learn in /usr/local/lib/python3.10/dist-packages (0.10.1)
+Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn) (1.23.5)
+Requirement already satisfied: scipy&gt;=1.3.2 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn) (1.11.3)
+Requirement already satisfied: scikit-learn&gt;=1.0.2 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn) (1.2.2)
+Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn) (3.2.0)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> librosa</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#import joblib</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#from sklearn.decomposition import PCA</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#from sklearn.decomposition import PCA as sklearnPCA</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#import requests</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#from tensorflow.keras.models import Sequential</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#from tensorflow.keras.layers import Dense</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#import tensorflow as tf</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pickle <span class="im">import</span> dump</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.utils <span class="im">import</span> to_categorical</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_set_description, data_file_audio, prediksi <span class="op">=</span> st.tabs([<span class="st">"Data Set Description"</span>, <span class="st">"Data File Audio"</span>, <span class="st">"Prediksi"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="bussiness-understanding" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <strong>Bussiness Understanding</strong></h1>
+<p>###<strong>Tujuan Dataset</strong> Untuk klasifikasi kategori atau status pasien berdasarkan berbagai atribut klinis. Fokus utama adalah pada kategori penyakit hepatitis, termasuk perkembangannya ke tahap-tahap yang lebih serius seperti fibrosis dan sirosis hati.</p>
+</section>
+<section id="data-understanding" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Data Understanding</strong></h1>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817475113,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:324,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="48b2e859-0dda-48c4-a924-b11aa7966352">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data HCV</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/Firdatulayuni/PSData_A/main/hcv.csv'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+  <div id="df-3c1a9a4b-678e-4f0a-ac66-7d206149e0fb" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">ALB</th>
+<th data-quarto-table-cell-role="th">ALP</th>
+<th data-quarto-table-cell-role="th">ALT</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">BIL</th>
+<th data-quarto-table-cell-role="th">CHE</th>
+<th data-quarto-table-cell-role="th">CHOL</th>
+<th data-quarto-table-cell-role="th">CREA</th>
+<th data-quarto-table-cell-role="th">GGT</th>
+<th data-quarto-table-cell-role="th">PROT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>m</td>
+<td>38.5</td>
+<td>52.5</td>
+<td>7.7</td>
+<td>22.1</td>
+<td>7.5</td>
+<td>6.93</td>
+<td>3.23</td>
+<td>106.0</td>
+<td>12.1</td>
+<td>69.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>m</td>
+<td>38.5</td>
+<td>70.3</td>
+<td>18.0</td>
+<td>24.7</td>
+<td>3.9</td>
+<td>11.17</td>
+<td>4.80</td>
+<td>74.0</td>
+<td>15.6</td>
+<td>76.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>m</td>
+<td>46.9</td>
+<td>74.7</td>
+<td>36.2</td>
+<td>52.6</td>
+<td>6.1</td>
+<td>8.84</td>
+<td>5.20</td>
+<td>86.0</td>
+<td>33.2</td>
+<td>79.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>m</td>
+<td>43.2</td>
+<td>52.0</td>
+<td>30.6</td>
+<td>22.6</td>
+<td>18.9</td>
+<td>7.33</td>
+<td>4.74</td>
+<td>80.0</td>
+<td>33.8</td>
+<td>75.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>m</td>
+<td>39.2</td>
+<td>74.1</td>
+<td>32.6</td>
+<td>24.8</td>
+<td>9.6</td>
+<td>9.15</td>
+<td>4.32</td>
+<td>76.0</td>
+<td>29.9</td>
+<td>68.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">610</td>
+<td>3=Cirrhosis</td>
+<td>62</td>
+<td>f</td>
+<td>32.0</td>
+<td>416.6</td>
+<td>5.9</td>
+<td>110.3</td>
+<td>50.0</td>
+<td>5.57</td>
+<td>6.30</td>
+<td>55.7</td>
+<td>650.9</td>
+<td>68.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">611</td>
+<td>3=Cirrhosis</td>
+<td>64</td>
+<td>f</td>
+<td>24.0</td>
+<td>102.8</td>
+<td>2.9</td>
+<td>44.4</td>
+<td>20.0</td>
+<td>1.54</td>
+<td>3.02</td>
+<td>63.0</td>
+<td>35.9</td>
+<td>71.3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">612</td>
+<td>3=Cirrhosis</td>
+<td>64</td>
+<td>f</td>
+<td>29.0</td>
+<td>87.3</td>
+<td>3.5</td>
+<td>99.0</td>
+<td>48.0</td>
+<td>1.66</td>
+<td>3.63</td>
+<td>66.7</td>
+<td>64.2</td>
+<td>82.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">613</td>
+<td>3=Cirrhosis</td>
+<td>46</td>
+<td>f</td>
+<td>33.0</td>
+<td>NaN</td>
+<td>39.0</td>
+<td>62.0</td>
+<td>20.0</td>
+<td>3.56</td>
+<td>4.20</td>
+<td>52.0</td>
+<td>50.0</td>
+<td>71.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">614</td>
+<td>3=Cirrhosis</td>
+<td>59</td>
+<td>f</td>
+<td>36.0</td>
+<td>NaN</td>
+<td>100.0</td>
+<td>80.0</td>
+<td>12.0</td>
+<td>9.07</td>
+<td>5.30</td>
+<td>67.0</td>
+<td>34.0</td>
+<td>68.0</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>615 rows × 13 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3c1a9a4b-678e-4f0a-ac66-7d206149e0fb')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-3c1a9a4b-678e-4f0a-ac66-7d206149e0fb button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3c1a9a4b-678e-4f0a-ac66-7d206149e0fb');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-7bf2e5fd-332f-491c-a342-e04da52e3026">
+  <button class="colab-df-quickchart" onclick="quickchart('df-7bf2e5fd-332f-491c-a342-e04da52e3026')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-7bf2e5fd-332f-491c-a342-e04da52e3026 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817640518,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:322,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="6b9dd75d-0256-436c-d948-eb7b9f7d5c0d">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan jumlah data dari setiap kelas dalam kolom 'Label'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>label_counts <span class="op">=</span> df[<span class="st">'Category'</span>].value_counts()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(label_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0=Blood Donor             533
+3=Cirrhosis                30
+1=Hepatitis                24
+2=Fibrosis                 21
+0s=suspect Blood Donor      7
+Name: Category, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817655642,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:289,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="61d91f6d-f7cb-4cd5-e42d-9f125f6efc2a">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan fitur yang memiliki nilai NaN dan jumlah NaN untuk setiap fitur</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nan_info <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>nan_columns <span class="op">=</span> nan_info[nan_info <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Fitur dengan nilai NaN:"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(nan_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fitur dengan nilai NaN:
+ALB      1
+ALP     18
+ALT      1
+CHOL    10
+PROT     1
+dtype: int64</code></pre>
+</div>
+</div>
+<p>###<strong>Dataset HCV</strong></p>
+<p>Dataset HCV ini merupakan data klasifikasi yang digunakan untuk memprediksi kategori atau status pasien berdasarkan 12 atribut klinis yang diambil dari 615 pasien melalui sampel darah, dengan target utama berfokus pada kategori penyakit Hepatitis C dan perkembangannya. Ini membantu dalam diagnosis dini dan pengelolaan penyakit Hepatitis C serta pemantauan kemungkinan perkembangan penyakit ini pada pasien. Dataset diambil dari uci, berikut link sumber dataset:</p>
+<p>https://archive.ics.uci.edu/dataset/571/hcv+data</p>
+<p>###<strong>Informasi Data</strong> - Jumlah Data: 615 - fitur: 12 - Dataset ini memiliki jumlah data sebanyak 615 data dengan 5 kelas kategori, tipe data categorical. - Blood Donors: 526 data - Suspect Blood Donors: 24 data - Hepatitis C: 20 data - Fibrosis: 12 data - Chirrosis: 7 data - missing value: 26 baris</p>
+<p>###<strong>Penjelasan Target</strong> - Blood Donors (Tidak terifeksi Hepatitis C)</p>
+<p>Kategori ini mencakup pasien yang tidak terinfeksi Hepatitis C</p>
+<ul>
+<li>Suspect Blood Donors</li>
+</ul>
+<p>Merujuk pada pasien yang dalam konteks penyakit Hepatitis C menunjukkan tanda-tanda atau karakteristik tertentu yang menimbulkan kecurigaan terhadap kemungkinan infeksi, namun belum sepenuhnya dikonfirmasi sebagai pasien Hepatitis C</p>
+<ul>
+<li>Hepatitis C (Pasien dengan infeksi Hepatitis C tanpa perkembangan lebih lanjut)</li>
+</ul>
+<p>Pasien dalam kategori ini telah terinfeksi Hepatitis C, tetapi infeksi tersebut belum berkembang menjadi tahap lebih lanjut seperti fibrosis atau sirosis hati. Ini mencakup pasien yang masih dalam tahap awal infeksi Hepatitis C</p>
+<ul>
+<li>Fibrosis (Hepatitis C menjadi fibrosis hati)</li>
+</ul>
+<p>Fibrosis adalah tahap dimana jaringan parut mulai terbentuk di hati sebagai respons terhadap kerusakan. Kategori ini mencakup pasien dengan infeksi Hepatitis C yang telah berkembang menjadi tahap fibrosis</p>
+<ul>
+<li>Cirrhosis (Hepatitis C menjadi sirosis hati)</li>
+</ul>
+<p>Sirosis hati adalah tahap yang lebih parah dari fibrosis, di mana jaringan parut yang luas menggantikan jaringan hati yang sehat. Pasien dalam kategori ini telah mengalami perkembangan penyakit menjadi sirosis hati, yang dapat menyebabkan gangguan fungsi hati yang signifikan</p>
+<p>###<strong>Jumlah Fitur</strong></p>
+<p>Pada dataset yang diambil dari UCI terdapat 12 fitur yaitu Age, Sex, ALB, ALP, ALT, AST, BIL, CHE, CHOL, CREA, GGT, PROT dan 1 Label yaitu Category. Data diperoleh dari hasil laboratorium donor darah dan pasien Hepatitis C serta nilai demografi seperti usia.</p>
+<p>###<strong>Penjelasan Fitur</strong></p>
+<ol type="1">
+<li>Age</li>
+</ol>
+<p>Usia pasien saat pengambilan sampel darah. Penyakit hepatitis, terutama Hepatitis C, cenderung lebih sering terjadi pada orang yang lebih tua. Tipe data numerik.</p>
+<ol start="2" type="1">
+<li>Sex</li>
+</ol>
+<p>Jenis kelamin pasien, beberapa studi menunjukkan bahwa pria memiliki risiko lebih tinggi terkena fibrosis atau sirosis hati dibandingkan wanita dalam kasus Hepatitis C. Tipe data string.</p>
+<ol start="3" type="1">
+<li>ALB (Albumin)</li>
+</ol>
+<p>Albumin adalah protein yang diproduksi oleh hati dan merupakan komponen utama dalam serum protein. Penurunan konsentrasi albumin dapat terjadi pada pasien dengan gangguan hati yang parah, termasuk sirosis hati. Fitur ini memiliki nilai kosong sebanyak 1 data. Tipe data numerik. 4. ALP (Alkaline Phosphatase)</p>
+<p>Alkaline Phosphatase adalah enzim yang terdapat dalam sel-sel hati dan tulang, konsentrasi alkaline phosphatase yang tinggi dalam darah dapat menjadi tanda adanya masalah pada hati atau saluran empedu. Ini dapat terkait dengan penyakit hati seperti sirosis. Fitur ini memiliki nilai kosong sebanyak 18 data. Tipe data numerik. 5. ALT (Alanine Aminotransferase)</p>
+<p>ALT adalah enzim yang terdapat dalam sel-sel hati, konsentrasi alanine aminotransferase yang tinggi adalah indikasi kerusakan sel hati. Ini bisa menjadi tanda penyakit hati, termasuk Hepatitis C. Fitur ini memiliki nilai kosong sebanyak 1 data. Tipe data numerik. 6. AST (Aspartate Aminotransferase)</p>
+<p>AST adalah enzim yang terdapat dalam sel-sel hati, jantung, otot, dan organ lainnya. Konsentrasi aspartate aminotransferase yang tinggi juga dapat mencerminkan kerusakan hati. Tipe data numerik. 7. BIL (Billirubin)</p>
+<p>Bilirubin adalah pigmen kuning yang terbentuk ketika sel darah merah dihancurkan, konsentrasi bilirubin yang tinggi dalam darah bisa menjadi tanda masalah hati, terutama pada sirosis hati. Tipe data numerik. 8. CHE (Cholinesterase)</p>
+<p>holinesterase adalah enzim yang terlibat dalam pemecahan asetilkolin. Konsentrasi cholinesterase yang rendah dalam darah dapat terjadi pada pasien dengan penyakit hati yang parah, seperti sirosis hati. Tipe data numerik 9. CHOL (Kolesterol)</p>
+<p>Cholesterol adalah lemak yang penting untuk pembentukan membran sel dan produksi hormon. Kolesterol rendah dapat terjadi pada pasien dengan sirosis hati karena hati yang rusak mungkin tidak mampu memetabolisme kolesterol dengan baik. Fitur ini memiliki nilai kosong sebanyak 10 data. Tipe data numerik 10. CREA (Kreatinin)</p>
+<p>Creatinine adalah produk buangan metabolisme otot yang diekskresikan melalui ginjal. Kadar creatinine dalam darah dapat memberikan informasi tentang fungsi ginjal. Tipe data numerik 11. GGT (Gamma-Glutamyl Transferase)</p>
+<p>GGT adalah enzim yang terdapat dalam hati dan saluran empedu. Konsentrasi gamma-glutamyl transferase yang tinggi dapat menjadi indikasi kerusakan hati. Ini adalah tanda umum penyakit hati, termasuk Hepatitis C. Tipe data numerik. 12. PROT (Protein Total)</p>
+<p>Total Protein mencakup jumlah albumin dan globulin dalam serum. Penurunan konsentrasi protein total dapat terjadi pada sirosis hati. Fitur ini memiliki nilai kosong sebanyak 1 data. Tipe data numerik.</p>
+</section>
+<section id="eksplorasi-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Eksplorasi Data</strong></h1>
+<p>Eksplorasi yang dilakukan melitputi statistik deskriptif dari dataset hcv, grafik distribusi kategori dan grafik distribusi umur (Age) berdasarkan kategori.</p>
+<ul>
+<li><p>statistik deskriptif</p>
+<p>Menampilkan rata-rata (mean), standar deviasi (standard deviation), nilai minimum (minimum), kuartil (25%, 50%, 75%), dan nilai maksimum (maximum). Memberikan gambaran umum tentang sebaran dan variasi data.</p></li>
+<li><p>grafik distribusi kategori</p>
+<p>Menunjukkan sebaran kategori dalam dataset. Dengan menggunakan count plot dihitung jumlah observasi untuk setiap kategori, hasilnya didapatkan bahwa distribusi kategori tidak seimbang karena kategori blood donors lebih banyak dibanding kategori lainnya.</p></li>
+<li><p>grafik distribusi umur (Age)</p>
+<p>Menunjukkan bagaimana distribusi umur berkorelasi dengan kategori tertentu. Memungkinkan pengamatan terhadap pola distribusi umur disetiap kategori. Dari hasil pengamatan grafik distribusi umur diketahui bahwa penderita Chirrosis lebih sedikit dibanding Blood Donors dan paling banyak diderita oleh kalangan usia 50 sampai 60-an. Sedangkan di rentang usia 30 sampai 50-an banyak yang hasil ujinya adalah blood donors</p></li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817671610,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:1413,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="5a4861ac-06a6-4b12-96b1-603ebaf6e032">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/Firdatulayuni/PSData_A/main/hcv.csv'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistik deskriptif</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>descriptive_stats <span class="op">=</span> df.describe()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Statistik Deskriptif:"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(descriptive_stats)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik distribusi kategori</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'Category'</span>, data<span class="op">=</span>df)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribusi Kategori'</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik distribusi umur (Age) berdasarkan kategori</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'Age'</span>, hue<span class="op">=</span><span class="st">'Category'</span>, kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribusi Umur berdasarkan Kategori'</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Statistik Deskriptif:
+              Age         ALB         ALP         ALT         AST         BIL  \
+count  615.000000  614.000000  597.000000  614.000000  615.000000  615.000000   
+mean    47.408130   41.620195   68.283920   28.450814   34.786341   11.396748   
+std     10.055105    5.780629   26.028315   25.469689   33.090690   19.673150   
+min     19.000000   14.900000   11.300000    0.900000   10.600000    0.800000   
+25%     39.000000   38.800000   52.500000   16.400000   21.600000    5.300000   
+50%     47.000000   41.950000   66.200000   23.000000   25.900000    7.300000   
+75%     54.000000   45.200000   80.100000   33.075000   32.900000   11.200000   
+max     77.000000   82.200000  416.600000  325.300000  324.000000  254.000000   
+
+              CHE        CHOL         CREA         GGT        PROT  
+count  615.000000  605.000000   615.000000  615.000000  614.000000  
+mean     8.196634    5.368099    81.287805   39.533171   72.044137  
+std      2.205657    1.132728    49.756166   54.661071    5.402636  
+min      1.420000    1.430000     8.000000    4.500000   44.800000  
+25%      6.935000    4.610000    67.000000   15.700000   69.300000  
+50%      8.260000    5.300000    77.000000   23.300000   72.200000  
+75%      9.590000    6.060000    88.000000   40.200000   75.400000  
+max     16.410000    9.670000  1079.100000  650.900000   90.000000  </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Prediksi Hepatitis C_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Prediksi Hepatitis C_files/figure-html/cell-11-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="preprocessing" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <strong>Preprocessing</strong></h1>
+<p>Preprosesing pada data berikut adalah 1. Membaca Data</p>
+<p>Tahap ini mengambil data dari file CSV dengan URL github dan menampilkannya menggunakan Pandas DataFrame</p>
+<ol start="2" type="1">
+<li>Menghapus missing value</li>
+</ol>
+<p>Penghapusan nilai yang hilang ini menggunakan dropna, metode ini merupakan metode dari DataFrame yang digunakan untuk menghapus baris dengan nilai yang hilang. Metode ini secara default akan menghapus semua baris yang mengandung setidaknya satu nilai yang hilang (NaN). Karena pada dataset ini memiliki missing values maka dilakukan penghapusan data (baris). Sebelum dilakukan penghapusan data, data terdiri dari 615 baris, setelah dilakukan penghapusan data tersisa sebanyak 589 baris. Maka data berkurang sebanyak 4,24% (kekurangan data/data awal x 100%).</p>
+<ol start="3" type="1">
+<li>Mengubah fitur Sex menjadi numerik</li>
+</ol>
+<p>Fitur Sex merupakan fitur yang berupa string ‘m’ dan ‘f’, maka diubah menjadi nilai biner 0 dan 1 yang dapat lebih mudah digunakan dalam analisis atau pemodelan, karena nilai biner seringkali lebih mudah diolah. 4. Normalisasi</p>
+<p>Normalisasi yang digunakan adalah StandarScaler dengan rumus:</p>
+<p>formula:</p>
+<pre><code>    y = (x – mean)/ deviasi_standar.</code></pre>
+<p>Data akan diubah sedemikian rupa sehingga rata-ratanya menjadi 0 dan deviasi standarnya menjadi 1. Hal ini berguna dalam analisis statistik dan pemodelan statistik karena memungkinkan perbandingan yang lebih baik antara berbagai fitur atau variabel dalam dataset, terutama jika variabel-variabel tersebut memiliki skala yang berbeda. Pada dataset hcv ini dilakukan normalisasi pada 11 fitur (Age, ALB, ALP, ALT, AST, BIL, CHE, CHOL, CREA, GGT, PROT) fitur sex tidak dinormalisasi karena fitur sex memiliki tipe data biner.</p>
+<ol start="5" type="1">
+<li>Balancing Data</li>
+</ol>
+<p>Pada dataset hcv ini, kelas dalam kategori tidak balance atau tidak seimbang karena kelas blood donors lebih banyak dibandingkan 4 kelas lainnya. Untuk mengatasi hal tersebut maka dilakukan balancing data dengan menggunakan RandomOverSampler. RandomOverSampler adalah metode oversampling yang digunakan untuk menyeimbangkan kelas pada dataset yang tidak seimbang dengan menambahkan duplikat dari sampel-sampel dari kelas minoritas secara acak. Tujuan utamanya adalah untuk meningkatkan jumlah sampel pada kelas minoritas sehingga distribusi kelas menjadi lebih seimbang.</p>
+<p><strong>Menghapus Missing Value</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghapus baris dengan nilai yang hilang</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Replace Fitur Dari String Ke Numerik</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mengubah fitur "Sex" menjadi nilai biner (0 dan 1)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Sex'</span>] <span class="op">=</span> df[<span class="st">'Sex'</span>].replace([<span class="st">'m'</span>, <span class="st">'f'</span>], [<span class="dv">0</span>, <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'data_cleaned.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817690115,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:316,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="dc34ac55-9b17-4a4f-eaf2-5d841017a405">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cleaned_df <span class="op">=</span> pd.read_csv(<span class="st">'data_cleaned.csv'</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cleaned_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+
+  <div id="df-87d9ad90-dede-41c3-b19d-b75637bd4111" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">ALB</th>
+<th data-quarto-table-cell-role="th">ALP</th>
+<th data-quarto-table-cell-role="th">ALT</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">BIL</th>
+<th data-quarto-table-cell-role="th">CHE</th>
+<th data-quarto-table-cell-role="th">CHOL</th>
+<th data-quarto-table-cell-role="th">CREA</th>
+<th data-quarto-table-cell-role="th">GGT</th>
+<th data-quarto-table-cell-role="th">PROT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>0</td>
+<td>38.5</td>
+<td>52.5</td>
+<td>7.7</td>
+<td>22.1</td>
+<td>7.5</td>
+<td>6.93</td>
+<td>3.23</td>
+<td>106.0</td>
+<td>12.1</td>
+<td>69.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>0</td>
+<td>38.5</td>
+<td>70.3</td>
+<td>18.0</td>
+<td>24.7</td>
+<td>3.9</td>
+<td>11.17</td>
+<td>4.80</td>
+<td>74.0</td>
+<td>15.6</td>
+<td>76.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>0</td>
+<td>46.9</td>
+<td>74.7</td>
+<td>36.2</td>
+<td>52.6</td>
+<td>6.1</td>
+<td>8.84</td>
+<td>5.20</td>
+<td>86.0</td>
+<td>33.2</td>
+<td>79.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>0</td>
+<td>43.2</td>
+<td>52.0</td>
+<td>30.6</td>
+<td>22.6</td>
+<td>18.9</td>
+<td>7.33</td>
+<td>4.74</td>
+<td>80.0</td>
+<td>33.8</td>
+<td>75.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0=Blood Donor</td>
+<td>32</td>
+<td>0</td>
+<td>39.2</td>
+<td>74.1</td>
+<td>32.6</td>
+<td>24.8</td>
+<td>9.6</td>
+<td>9.15</td>
+<td>4.32</td>
+<td>76.0</td>
+<td>29.9</td>
+<td>68.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">584</td>
+<td>3=Cirrhosis</td>
+<td>58</td>
+<td>1</td>
+<td>34.0</td>
+<td>46.4</td>
+<td>15.0</td>
+<td>150.0</td>
+<td>8.0</td>
+<td>6.26</td>
+<td>3.98</td>
+<td>56.0</td>
+<td>49.7</td>
+<td>80.6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">585</td>
+<td>3=Cirrhosis</td>
+<td>59</td>
+<td>1</td>
+<td>39.0</td>
+<td>51.3</td>
+<td>19.6</td>
+<td>285.8</td>
+<td>40.0</td>
+<td>5.77</td>
+<td>4.51</td>
+<td>136.1</td>
+<td>101.1</td>
+<td>70.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">586</td>
+<td>3=Cirrhosis</td>
+<td>62</td>
+<td>1</td>
+<td>32.0</td>
+<td>416.6</td>
+<td>5.9</td>
+<td>110.3</td>
+<td>50.0</td>
+<td>5.57</td>
+<td>6.30</td>
+<td>55.7</td>
+<td>650.9</td>
+<td>68.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">587</td>
+<td>3=Cirrhosis</td>
+<td>64</td>
+<td>1</td>
+<td>24.0</td>
+<td>102.8</td>
+<td>2.9</td>
+<td>44.4</td>
+<td>20.0</td>
+<td>1.54</td>
+<td>3.02</td>
+<td>63.0</td>
+<td>35.9</td>
+<td>71.3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">588</td>
+<td>3=Cirrhosis</td>
+<td>64</td>
+<td>1</td>
+<td>29.0</td>
+<td>87.3</td>
+<td>3.5</td>
+<td>99.0</td>
+<td>48.0</td>
+<td>1.66</td>
+<td>3.63</td>
+<td>66.7</td>
+<td>64.2</td>
+<td>82.0</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>589 rows × 13 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-87d9ad90-dede-41c3-b19d-b75637bd4111')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-87d9ad90-dede-41c3-b19d-b75637bd4111 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-87d9ad90-dede-41c3-b19d-b75637bd4111');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-912c97a2-e588-4e59-9cdd-2309dd7b7bb4">
+  <button class="colab-df-quickchart" onclick="quickchart('df-912c97a2-e588-4e59-9cdd-2309dd7b7bb4')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-912c97a2-e588-4e59-9cdd-2309dd7b7bb4 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p><strong>Normalisasi</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data menjadi set pelatihan dan pengujian</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> cleaned_df.drop(columns<span class="op">=</span>[<span class="st">'Category'</span>])  <span class="co"># Pastikan 'Class' adalah kolom target</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> cleaned_df[<span class="st">'Category'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data menjadi set pelatihan dan pengujian</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">1</span>, test_size<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifikasi kolom yang merupakan data biner (jika ada)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>binary_columns <span class="op">=</span> [<span class="st">'Sex'</span>]  <span class="co"># Gantilah dengan kolom-kolom biner Anda</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define scaler</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hanya fit scaler pada fitur yang bukan data biner</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>non_binary_columns <span class="op">=</span> [col <span class="cf">for</span> col <span class="kw">in</span> X_train.columns <span class="cf">if</span> col <span class="kw">not</span> <span class="kw">in</span> binary_columns]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>scaler.fit(X_train[non_binary_columns])</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># save the scaler</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>dump(scaler, <span class="bu">open</span>(<span class="st">'scaler.pkl'</span>, <span class="st">'wb'</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformasi data pelatihan (hanya pada fitur non-biner)</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> X_train.copy()</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>X_train_scaled[non_binary_columns] <span class="op">=</span> scaler.transform(X_train[non_binary_columns])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817735733,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:501,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="37ddd5d2-734f-415c-bf18-303ea21bfe96">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tampilkan hasil normalisasi</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>normalized_data <span class="op">=</span> pd.DataFrame(X_train_scaled, columns<span class="op">=</span>X.columns)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan hasil normalisasi dalam format CSV</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>normalized_data.to_csv(<span class="st">'normalized_data_train.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Baca data dari file CSV</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>normalized_data_train <span class="op">=</span> pd.read_csv(<span class="st">'normalized_data_train.csv'</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>normalized_data_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+
+  <div id="df-144094eb-569c-4233-aebe-c9a6ba5b7308" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">ALB</th>
+<th data-quarto-table-cell-role="th">ALP</th>
+<th data-quarto-table-cell-role="th">ALT</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">BIL</th>
+<th data-quarto-table-cell-role="th">CHE</th>
+<th data-quarto-table-cell-role="th">CHOL</th>
+<th data-quarto-table-cell-role="th">CREA</th>
+<th data-quarto-table-cell-role="th">GGT</th>
+<th data-quarto-table-cell-role="th">PROT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1.078006</td>
+<td>0</td>
+<td>0.359748</td>
+<td>0.145468</td>
+<td>1.196471</td>
+<td>0.272916</td>
+<td>0.144231</td>
+<td>0.002844</td>
+<td>-0.443225</td>
+<td>-0.222487</td>
+<td>0.920313</td>
+<td>0.662574</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-1.280899</td>
+<td>0</td>
+<td>0.517924</td>
+<td>0.050849</td>
+<td>-0.031716</td>
+<td>-0.258231</td>
+<td>-0.320879</td>
+<td>0.898895</td>
+<td>-0.612767</td>
+<td>0.023108</td>
+<td>-0.325948</td>
+<td>-0.896521</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.443695</td>
+<td>0</td>
+<td>0.113697</td>
+<td>0.122759</td>
+<td>1.025890</td>
+<td>-0.298210</td>
+<td>-0.133766</td>
+<td>1.717227</td>
+<td>0.814951</td>
+<td>0.309635</td>
+<td>0.379929</td>
+<td>0.214334</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.443695</td>
+<td>1</td>
+<td>0.693675</td>
+<td>0.349845</td>
+<td>-0.080453</td>
+<td>-0.183985</td>
+<td>-0.342263</td>
+<td>0.226857</td>
+<td>0.591870</td>
+<td>-0.324818</td>
+<td>-0.197607</td>
+<td>-0.253394</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.037908</td>
+<td>1</td>
+<td>-0.413555</td>
+<td>-0.679609</td>
+<td>-0.562955</td>
+<td>-0.449559</td>
+<td>-0.187227</td>
+<td>0.464585</td>
+<td>1.145111</td>
+<td>-0.222487</td>
+<td>-0.401939</td>
+<td>-0.019530</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">466</td>
+<td>-0.367879</td>
+<td>0</td>
+<td>0.517924</td>
+<td>0.932697</td>
+<td>0.031643</td>
+<td>-0.246809</td>
+<td>-0.304841</td>
+<td>-0.166309</td>
+<td>-0.701999</td>
+<td>0.555230</td>
+<td>-0.393496</td>
+<td>0.974393</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">467</td>
+<td>-0.266432</td>
+<td>0</td>
+<td>0.482774</td>
+<td>0.096266</td>
+<td>-0.533713</td>
+<td>-0.509527</td>
+<td>-0.203265</td>
+<td>-0.070303</td>
+<td>-0.023833</td>
+<td>0.043574</td>
+<td>-0.341146</td>
+<td>-0.097485</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">468</td>
+<td>-0.976559</td>
+<td>0</td>
+<td>0.693675</td>
+<td>-0.709887</td>
+<td>-0.514218</td>
+<td>-0.323911</td>
+<td>-0.010806</td>
+<td>0.263430</td>
+<td>0.449098</td>
+<td>0.452899</td>
+<td>-0.442468</td>
+<td>0.837972</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">469</td>
+<td>0.646588</td>
+<td>0</td>
+<td>0.939726</td>
+<td>0.217378</td>
+<td>0.455660</td>
+<td>0.527067</td>
+<td>-0.267418</td>
+<td>0.313719</td>
+<td>-0.157682</td>
+<td>0.104973</td>
+<td>-0.114860</td>
+<td>1.461610</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">470</td>
+<td>-1.280899</td>
+<td>0</td>
+<td>1.256077</td>
+<td>0.141683</td>
+<td>-0.134065</td>
+<td>-0.089749</td>
+<td>1.817558</td>
+<td>0.569733</td>
+<td>-1.406935</td>
+<td>0.186838</td>
+<td>-0.337769</td>
+<td>0.779506</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>471 rows × 12 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-144094eb-569c-4233-aebe-c9a6ba5b7308')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-144094eb-569c-4233-aebe-c9a6ba5b7308 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-144094eb-569c-4233-aebe-c9a6ba5b7308');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-62bb8ace-b5fe-4acc-9581-dcf747283ccb">
+  <button class="colab-df-quickchart" onclick="quickchart('df-62bb8ace-b5fe-4acc-9581-dcf747283ccb')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-62bb8ace-b5fe-4acc-9581-dcf747283ccb button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p><strong>Balancing Data</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817741508,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:843,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="a84cb699-f8ed-47d6-ff94-5a31eb78d601">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.over_sampling <span class="im">import</span> RandomOverSampler</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Menyeimbangkan data menggunakan RandomOverSampler</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>ros <span class="op">=</span> RandomOverSampler(random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>X_resampled, y_resampled <span class="op">=</span> ros.fit_resample(X_train_scaled, y_train)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan data yang telah di-resample</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>resampled_data <span class="op">=</span> pd.DataFrame(X_resampled, columns<span class="op">=</span>X.columns)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>resampled_data[<span class="st">'Category'</span>] <span class="op">=</span> y_resampled</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>resampled_data.to_csv(<span class="st">'balanced_data_train.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Tampilkan data yang telah di-resample</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>balanced_data_train <span class="op">=</span> pd.read_csv(<span class="st">'balanced_data_train.csv'</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>balanced_data_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+
+  <div id="df-720a42ad-690f-48ba-a7a5-aaf72a6d8a03" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">ALB</th>
+<th data-quarto-table-cell-role="th">ALP</th>
+<th data-quarto-table-cell-role="th">ALT</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">BIL</th>
+<th data-quarto-table-cell-role="th">CHE</th>
+<th data-quarto-table-cell-role="th">CHOL</th>
+<th data-quarto-table-cell-role="th">CREA</th>
+<th data-quarto-table-cell-role="th">GGT</th>
+<th data-quarto-table-cell-role="th">PROT</th>
+<th data-quarto-table-cell-role="th">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1.078006</td>
+<td>0</td>
+<td>0.359748</td>
+<td>0.145468</td>
+<td>1.196471</td>
+<td>0.272916</td>
+<td>0.144231</td>
+<td>0.002844</td>
+<td>-0.443225</td>
+<td>-0.222487</td>
+<td>0.920313</td>
+<td>0.662574</td>
+<td>0=Blood Donor</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-1.280899</td>
+<td>0</td>
+<td>0.517924</td>
+<td>0.050849</td>
+<td>-0.031716</td>
+<td>-0.258231</td>
+<td>-0.320879</td>
+<td>0.898895</td>
+<td>-0.612767</td>
+<td>0.023108</td>
+<td>-0.325948</td>
+<td>-0.896521</td>
+<td>0=Blood Donor</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.443695</td>
+<td>0</td>
+<td>0.113697</td>
+<td>0.122759</td>
+<td>1.025890</td>
+<td>-0.298210</td>
+<td>-0.133766</td>
+<td>1.717227</td>
+<td>0.814951</td>
+<td>0.309635</td>
+<td>0.379929</td>
+<td>0.214334</td>
+<td>0=Blood Donor</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.443695</td>
+<td>1</td>
+<td>0.693675</td>
+<td>0.349845</td>
+<td>-0.080453</td>
+<td>-0.183985</td>
+<td>-0.342263</td>
+<td>0.226857</td>
+<td>0.591870</td>
+<td>-0.324818</td>
+<td>-0.197607</td>
+<td>-0.253394</td>
+<td>0=Blood Donor</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.037908</td>
+<td>1</td>
+<td>-0.413555</td>
+<td>-0.679609</td>
+<td>-0.562955</td>
+<td>-0.449559</td>
+<td>-0.187227</td>
+<td>0.464585</td>
+<td>1.145111</td>
+<td>-0.222487</td>
+<td>-0.401939</td>
+<td>-0.019530</td>
+<td>0=Blood Donor</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2125</td>
+<td>1.052375</td>
+<td>0</td>
+<td>-1.854712</td>
+<td>2.806151</td>
+<td>-0.967477</td>
+<td>4.216542</td>
+<td>2.507204</td>
+<td>-2.223569</td>
+<td>-1.299856</td>
+<td>-0.296165</td>
+<td>3.946463</td>
+<td>1.227746</td>
+<td>3=Cirrhosis</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2126</td>
+<td>1.661055</td>
+<td>1</td>
+<td>-2.206213</td>
+<td>0.694258</td>
+<td>-1.138058</td>
+<td>1.852080</td>
+<td>1.972594</td>
+<td>-2.968754</td>
+<td>-1.558630</td>
+<td>-0.290025</td>
+<td>0.408637</td>
+<td>1.987805</td>
+<td>3=Cirrhosis</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2127</td>
+<td>0.849481</td>
+<td>0</td>
+<td>-2.030463</td>
+<td>-1.080793</td>
+<td>-1.264776</td>
+<td>1.318077</td>
+<td>5.768320</td>
+<td>-2.868177</td>
+<td>-3.521742</td>
+<td>-0.032151</td>
+<td>-0.378298</td>
+<td>-3.430051</td>
+<td>3=Cirrhosis</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2128</td>
+<td>0.849481</td>
+<td>0</td>
+<td>-2.557715</td>
+<td>0.459603</td>
+<td>-0.480101</td>
+<td>8.157313</td>
+<td>1.384524</td>
+<td>-3.078474</td>
+<td>-1.638939</td>
+<td>-0.285932</td>
+<td>0.906803</td>
+<td>-1.266806</td>
+<td>3=Cirrhosis</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2129</td>
+<td>1.356715</td>
+<td>0</td>
+<td>-0.448706</td>
+<td>1.284679</td>
+<td>0.021896</td>
+<td>3.114269</td>
+<td>0.208384</td>
+<td>-1.268086</td>
+<td>-0.443225</td>
+<td>-0.175414</td>
+<td>6.084358</td>
+<td>0.311778</td>
+<td>3=Cirrhosis</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>2130 rows × 13 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-720a42ad-690f-48ba-a7a5-aaf72a6d8a03')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-720a42ad-690f-48ba-a7a5-aaf72a6d8a03 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-720a42ad-690f-48ba-a7a5-aaf72a6d8a03');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-0f4cf5c6-4f81-472e-a2de-b631adfe0611">
+  <button class="colab-df-quickchart" onclick="quickchart('df-0f4cf5c6-4f81-472e-a2de-b631adfe0611')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-0f4cf5c6-4f81-472e-a2de-b631adfe0611 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'scaler.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> standarisasi:</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    loadscal<span class="op">=</span> pickle.load(standarisasi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalisasi data pengujian (X_test) menggunakan scaler yang telah dimuat</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> X_test.copy()</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>X_test_scaled[non_binary_columns] <span class="op">=</span> loadscal.transform(X_test[non_binary_columns])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817751229,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:538,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="ac0ba32f-5525-4897-8358-1f964d45b6c4">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tampilkan hasil normalisasi</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>normalized_data_test <span class="op">=</span> pd.DataFrame(X_test_scaled, columns<span class="op">=</span>X.columns)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan hasil normalisasi dalam format CSV</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>normalized_data_test.to_csv(<span class="st">'normalized_data_test.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Baca data dari file CSV</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>normal_data_test <span class="op">=</span> pd.read_csv(<span class="st">'normalized_data_test.csv'</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>normal_data_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+
+  <div id="df-9956166e-f420-4333-842f-bbf09bdd7ac9" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">ALB</th>
+<th data-quarto-table-cell-role="th">ALP</th>
+<th data-quarto-table-cell-role="th">ALT</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">BIL</th>
+<th data-quarto-table-cell-role="th">CHE</th>
+<th data-quarto-table-cell-role="th">CHOL</th>
+<th data-quarto-table-cell-role="th">CREA</th>
+<th data-quarto-table-cell-role="th">GGT</th>
+<th data-quarto-table-cell-role="th">PROT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.255268</td>
+<td>1</td>
+<td>-0.185079</td>
+<td>0.645056</td>
+<td>-0.041463</td>
+<td>-0.186841</td>
+<td>-0.288802</td>
+<td>0.203998</td>
+<td>-0.425379</td>
+<td>-0.468081</td>
+<td>-0.336080</td>
+<td>-0.019530</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.950928</td>
+<td>1</td>
+<td>0.254298</td>
+<td>-0.637976</td>
+<td>-0.904118</td>
+<td>0.047321</td>
+<td>0.368767</td>
+<td>0.208570</td>
+<td>0.725719</td>
+<td>-0.193834</td>
+<td>-0.204361</td>
+<td>1.987805</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-1.382346</td>
+<td>0</td>
+<td>0.324598</td>
+<td>-0.865062</td>
+<td>3.457894</td>
+<td>0.344307</td>
+<td>0.010579</td>
+<td>-0.074875</td>
+<td>-1.567553</td>
+<td>-0.202020</td>
+<td>-0.079398</td>
+<td>-0.428793</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.164985</td>
+<td>0</td>
+<td>0.605799</td>
+<td>-1.591735</td>
+<td>-0.182802</td>
+<td>2.594544</td>
+<td>0.315306</td>
+<td>-0.541187</td>
+<td>-1.219547</td>
+<td>-0.416916</td>
+<td>0.543733</td>
+<td>0.233823</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-0.875112</td>
+<td>0</td>
+<td>0.746400</td>
+<td>-0.244362</td>
+<td>-0.299772</td>
+<td>-0.323911</td>
+<td>1.838942</td>
+<td>0.208570</td>
+<td>-0.532458</td>
+<td>-0.079223</td>
+<td>-0.407005</td>
+<td>0.721040</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">113</td>
+<td>-0.875112</td>
+<td>0</td>
+<td>0.957301</td>
+<td>-0.092972</td>
+<td>-0.099948</td>
+<td>-0.144006</td>
+<td>-0.032190</td>
+<td>0.862321</td>
+<td>0.788181</td>
+<td>-0.161088</td>
+<td>0.165464</td>
+<td>1.286212</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">114</td>
+<td>0.443695</td>
+<td>1</td>
+<td>1.748179</td>
+<td>0.486096</td>
+<td>-0.026842</td>
+<td>-0.386735</td>
+<td>-0.176535</td>
+<td>-0.646336</td>
+<td>0.466945</td>
+<td>0.145905</td>
+<td>-0.400251</td>
+<td>2.026782</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">115</td>
+<td>0.545141</td>
+<td>1</td>
+<td>0.148847</td>
+<td>-0.528219</td>
+<td>-0.290025</td>
+<td>0.235793</td>
+<td>-0.181881</td>
+<td>-0.710340</td>
+<td>-0.996466</td>
+<td>-0.283885</td>
+<td>-0.435713</td>
+<td>-0.175440</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">116</td>
+<td>-1.382346</td>
+<td>1</td>
+<td>-0.940808</td>
+<td>0.073558</td>
+<td>-0.611693</td>
+<td>-0.358179</td>
+<td>-0.395724</td>
+<td>0.761744</td>
+<td>0.190324</td>
+<td>-0.324818</td>
+<td>-0.212805</td>
+<td>0.487176</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">117</td>
+<td>-1.280899</td>
+<td>0</td>
+<td>0.096122</td>
+<td>-0.024846</td>
+<td>0.504398</td>
+<td>0.629870</td>
+<td>-0.000114</td>
+<td>0.524016</td>
+<td>-0.666306</td>
+<td>0.371034</td>
+<td>-0.391807</td>
+<td>0.350755</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>118 rows × 12 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9956166e-f420-4333-842f-bbf09bdd7ac9')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9956166e-f420-4333-842f-bbf09bdd7ac9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9956166e-f420-4333-842f-bbf09bdd7ac9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b904f801-2152-460b-85b9-4826044a3137">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b904f801-2152-460b-85b9-4826044a3137')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b904f801-2152-460b-85b9-4826044a3137 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section id="modelling" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <strong>Modelling</strong></h1>
+<p>Pemilihan model terbaik diambil dari akurasi terbaik dimana pada dataset ini dicoba beberapa model diantaranya KNN, Gaussian Naive Bayes, Deccision Tree, SVM, Logistic Reggression, Random Forest dan Extra Trees. Lalu didapatkan model dengan akurasi terbaik yaitu SVM.</p>
+<p>##<strong>SVM</strong>## Support Vector Machine (SVM) merupakan salah satu metode machine learning dengan pendekatan supervised learning yang paling populer digunakan.</p>
+<p>Metode SVM mengkelaskan data baru, mengelompokan data-data dengan memisahkannya berdasarkan hyperplane dengan ruang N-dimensi (N - jumlah fitur) yang secara jelas mengklasifikasikan titik data.</p>
+<p>Pada modelling ini kernel yang digunakan adalah svm kernel linear dengan pustaka scikit-learn. Kernel linear adalah fungsi kernel yang paling sederhana. Kernel linear digunakan ketika data yang dianalisis sudah terpisah secara linear. Kernel linear cocok ketika terdapat banyak fitur dikarenakan pemetaan ke ruang dimensi yang lebih tinggi tidak benar-benar meningkatkan kinerja.</p>
+<p>Dimana fungsi SVM kernel linear adalah sebagai berikut:</p>
+<p>$ f(x) = (_{i=1}^{N} _i y_i (x_i x) + b) $</p>
+<p>Keterangan:</p>
+<p>f(x) = fungsi keputusan untuk sampel input x N = jumlah vektor pendukung</p>
+<p>ai= multiplikator Lagrange (koefisien vektor pendukung)</p>
+<p>yi = label kelas dari vektor pendukung ke-i</p>
+<p>xi = vektor pendukung ke-i</p>
+<p>x = vektor fitur dari sampel input yang akan diklasifikasikan</p>
+<p>b = bias</p>
+<p>berikut langkah-langkah perhitungan SVM: 1. Hitung produk dot antara x dan setiap vektor pendukung xi:xi.x 2. Kalikan hasilnya dengan koefisien Lagrange (ai) dan label kelas (yi) 3. Jumlahkan semua hasil dari langkah-langkah unttuk semua vektor pendukung 4. tambahkan nilai bias (b) 5. Tentukan tanda hasilnya untuk mendapatkan prediksi kelas</p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817808033,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:412,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="932a4285-75e0-4a08-c018-52c061ff42ac">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pelatihan model SVM</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>svm_model <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'linear'</span>, C<span class="op">=</span><span class="fl">1.0</span>, random_state<span class="op">=</span><span class="dv">42</span>, class_weight<span class="op">=</span><span class="st">'balanced'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>svm_model.fit(X_train_scaled, y_train)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model SVM ke dalam file pickle</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>svm_model_file_path <span class="op">=</span> <span class="st">'svm_model.pkl'</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(svm_model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> svm_model_file:</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    pickle.dump(svm_model, svm_model_file)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Memuat model SVM dari file pickle</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(svm_model_file_path, <span class="st">'rb'</span>) <span class="im">as</span> svm_model_file:</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    loaded_svm_model <span class="op">=</span> pickle.load(svm_model_file)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediksi menggunakan model SVM</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>y_pred_svm <span class="op">=</span> loaded_svm_model.predict(X_test_scaled)</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung akurasi SVM</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>svm_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred_svm)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Akurasi SVM:"</span>, svm_accuracy)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Membuat DataFrame untuk menampilkan nilai sebenarnya dan hasil prediksi</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>result_df <span class="op">=</span> pd.DataFrame({<span class="st">'Actual'</span>: y_test, <span class="st">'Predicted'</span>: y_pred_svm})</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan DataFrame</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="co">#print(result_df)</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung jumlah prediksi yang sesuai dan tidak sesuai</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>correct_predictions <span class="op">=</span> result_df[<span class="st">'Actual'</span>] <span class="op">==</span> result_df[<span class="st">'Predicted'</span>]</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>incorrect_predictions <span class="op">=</span> <span class="op">~</span>correct_predictions</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan jumlah prediksi yang sesuai dan tidak sesuai</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Jumlah prediksi yang sesuai:", correct_predictions.sum())</span></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Jumlah prediksi yang tidak sesuai:", incorrect_predictions.sum())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi SVM: 0.9152542372881356</code></pre>
+</div>
+</div>
+<p><strong>KNN</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1699834999684,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:1094,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="cafd17c8-1da2-4ba0-e987-0bbcddd3cbbd">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#KNN</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> np.zeros((K <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, K, <span class="dv">2</span>):</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    knn <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span>n, metric<span class="op">=</span><span class="st">"euclidean"</span>).fit(X_train_scaled, y_train)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> knn.predict(X_test_scaled)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    acc[n <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>best_accuracy <span class="op">=</span> acc.<span class="bu">max</span>()</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>best_k <span class="op">=</span> acc.argmax() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Tampilkan akurasi terbaik dan nilai k</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Akurasi terbaik adalah'</span>, best_accuracy, <span class="st">'dengan nilai k ='</span>, best_k)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model KNN terbaik</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>best_knn <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span>best_k, metric<span class="op">=</span><span class="st">"euclidean"</span>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>best_knn.fit(X_train_scaled, y_train)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the best KNN model using pickle</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>model_file_path <span class="op">=</span> <span class="vs">r'KNN_model.pkl'</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> model_file:</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    pickle.dump(best_knn, model_file)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="vs">r'KNN_model.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> knn_model:</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    load_knn <span class="op">=</span> pickle.load(knn_model)</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> load_knn.predict(X_test_scaled)</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan prediksi</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Hasil Prediksi:")</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a><span class="co">#for i in range(len(X_test_scaled)):</span></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(f"Data ke-{i + 1}: Prediksi={y_pred[i]}, Sebenarnya={y_test.iloc[i]}")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi terbaik adalah 0.8728813559322034 dengan nilai k = 1</code></pre>
+</div>
+</div>
+<p><strong>GNB</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700066840387,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:4,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="5a846231-c8c8-4b23-c9b6-410cc86f0cc2">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#GNB</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gnb <span class="op">=</span> GaussianNB()</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>gnb.fit(X_train_scaled, y_train)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model Gaussian Naive Bayes ke dalam file pkl</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>gnb_model_file_path <span class="op">=</span> <span class="vs">r'gnb_model.pkl'</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(gnb_model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> gnb_model_file:</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    pickle.dump(gnb, gnb_model_file)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(gnb_model_file_path, <span class="st">'rb'</span>) <span class="im">as</span> gnb_model:</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    load_gnb <span class="op">=</span> pickle.load(gnb_model)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">"Gaussian Naive Bayes"</span>)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Melakukan prediksi dengan model Gaussian Naive Bayes</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>y_pred_gnb <span class="op">=</span> load_gnb.predict(X_test_scaled)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Hitung dan tampilkan akurasi Gaussian Naive Bayes</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>gnb_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred_gnb)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Akurasi Gaussian Naive Bayes:'</span>)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>gnb_accuracy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gaussian Naive Bayes
+Akurasi Gaussian Naive Bayes:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>0.864406779661017</code></pre>
+</div>
+</div>
+<p><strong>D3</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700067507217,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:652,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="43da2662-14ad-4cab-8ed2-ec1e03aa7b99">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Deccision Tree</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>decision_tree <span class="op">=</span> DecisionTreeClassifier()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>decision_tree.fit(X_train_scaled, y_train)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model Decision Tree ke dalam file pkl</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>decision_tree_model_file_path <span class="op">=</span> <span class="vs">r'decision_tree_model.pkl'</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(decision_tree_model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> decision_tree_model_file:</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    pickle.dump(decision_tree, decision_tree_model_file)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(decision_tree_model_file_path, <span class="st">'rb'</span>) <span class="im">as</span> decision_tree_model:</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    load_decision_tree <span class="op">=</span> pickle.load(decision_tree_model)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Melakukan prediksi dengan model Decision Tree</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>y_pred_decision_tree <span class="op">=</span> load_decision_tree.predict(X_test_scaled)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hitung dan tampilkan akurasi Decision Tree</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>decision_tree_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred_decision_tree)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Akurasi Decision Tree :'</span>)</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (decision_tree_accuracy)</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Membuat DataFrame dengan data asli (X_test) dan hasil prediksi</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="co">#result_df_decision_tree = .copy()</span></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co">#result_df_decision_tree['Predicted_Category'] = y_pred_decision_tree</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan data asli dan hasil prediksi</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Data Asli dan Hasil Prediksi dengan Decision Tree:")</span></span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="co">#print(result_df_decision_tree)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi Decision Tree :
+0.8983050847457628
+            Actual      Predicted
+507  0=Blood Donor  0=Blood Donor
+563     2=Fibrosis    1=Hepatitis
+23   0=Blood Donor  0=Blood Donor
+555     2=Fibrosis    1=Hepatitis
+90   0=Blood Donor  0=Blood Donor
+..             ...            ...
+82   0=Blood Donor  0=Blood Donor
+463  0=Blood Donor  0=Blood Donor
+467  0=Blood Donor  0=Blood Donor
+335  0=Blood Donor  0=Blood Donor
+34   0=Blood Donor  0=Blood Donor
+
+[118 rows x 2 columns]</code></pre>
+</div>
+</div>
+<p><strong>Random Forest</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700066793777,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="1e31b4c0-7c50-413e-c491-111a1c91e627">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pelatihan model Random Forest</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>rf_model.fit(X_train_scaled, y_train)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model Random Forest ke dalam file pickle</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>rf_model_file_path <span class="op">=</span> <span class="st">'rf_model.pkl'</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(rf_model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> rf_model_file:</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    pickle.dump(rf_model, rf_model_file)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Memuat model Random Forest dari file pickle</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(rf_model_file_path, <span class="st">'rb'</span>) <span class="im">as</span> rf_model_file:</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    loaded_rf_model <span class="op">=</span> pickle.load(rf_model_file)</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediksi menggunakan model Random Forest</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>y_pred_rf <span class="op">=</span> loaded_rf_model.predict(X_test_scaled)</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung akurasi Random Forest</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>rf_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred_rf)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Akurasi Random Forest:"</span>, rf_accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi Random Forest: 0.8983050847457628</code></pre>
+</div>
+</div>
+<p><strong>Logistic Reggression</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700066750694,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:754,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="4baf2edd-0ed8-4fc2-bee7-ba24616cd6b1">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pelatihan model Logistic Regression</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>logreg_model <span class="op">=</span> LogisticRegression(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>logreg_model.fit(X_train_scaled, y_train)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model Logistic Regression ke dalam file pickle</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>logreg_model_file_path <span class="op">=</span> <span class="st">'logreg_model.pkl'</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(logreg_model_file_path, <span class="st">'wb'</span>) <span class="im">as</span> logreg_model_file:</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    pickle.dump(logreg_model, logreg_model_file)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Memuat model Logistic Regression dari file pickle</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(logreg_model_file_path, <span class="st">'rb'</span>) <span class="im">as</span> logreg_model_file:</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    loaded_logreg_model <span class="op">=</span> pickle.load(logreg_model_file)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediksi menggunakan model Logistic Regression</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>y_pred_logreg <span class="op">=</span> loaded_logreg_model.predict(X_test_scaled)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung akurasi Logistic Regression</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>logreg_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred_logreg)</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Akurasi Logistic Regression:"</span>, logreg_accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Akurasi Logistic Regression: 0.8898305084745762</code></pre>
+</div>
+</div>
+<p><strong>Extra Trees</strong></p>
+<div class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700066686639,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:508,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}" data-outputid="7c85a229-4b35-495b-eb7c-75d9a8965c94">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> ExtraTreesClassifier</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Buat model Extra Trees</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>extra_trees_model <span class="op">=</span> ExtraTreesClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Latih model pada data pelatihan yang telah dinormalisasi</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>extra_trees_model.fit(X_train_scaled, y_train)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Lakukan prediksi pada data pengujian yang telah dinormalisasi</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> extra_trees_model.predict(X_test_scaled)</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluasi kinerja model pada data pengujian</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Accuracy on test data: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpan model dalam format pkl</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'extra_trees_model.pkl'</span>, <span class="st">'wb'</span>) <span class="im">as</span> model_file:</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    pickle.dump(extra_trees_model, model_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy on test data: 0.89</code></pre>
+</div>
+</div>
+</section>
+<section id="prediksi" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <strong>Prediksi</strong></h1>
+<p>Berikut ini merupakan prediksi hepatitis C menggunakan model SVM, dengan menggunakan inputan user lalu dibuat dataframe dari inputan tersebut sebagai fitur. Kemudian dinormalisasi lalu diprediksi menggunakan model terbaik yaitu SVM untuk menentukan pengklasifikasian.</p>
+<div class="cell" data-outputid="6cd8d22d-b0a8-4713-f938-76ef3ca19e8b" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1700817876118,&quot;user_tz&quot;:-420,&quot;elapsed&quot;:52822,&quot;user&quot;:{&quot;displayName&quot;:&quot;21-144 Firdatul A'yuni&quot;,&quot;userId&quot;:&quot;04335010483596107898&quot;}}">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Meminta input pengguna untuk setiap fitur</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai Age: '</span>))</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>sex <span class="op">=</span> <span class="bu">input</span>(<span class="st">'Masukkan nilai Sex: (0 untuk pria, 1 untuk wanita) '</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>alb <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai ALB: '</span>))</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>alp <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai ALP: '</span>))</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>alt <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai ALT: '</span>))</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>ast <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai AST: '</span>))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>bil <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai BIL: '</span>))</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>che <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai CHE: '</span>))</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>chol <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai CHOL: '</span>))</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>crea <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai CREA: '</span>))</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>ggt <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai GGT: '</span>))</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>prot <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Masukkan nilai PROT: '</span>))</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Membuat DataFrame dari input pengguna</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>input_features <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Age'</span>: [age],</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sex'</span>: [sex],</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ALB'</span>: [alb],</span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ALP'</span>: [alp],</span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ALT'</span>: [alt],</span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">'AST'</span>: [ast],</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'BIL'</span>: [bil],</span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CHE'</span>: [che],</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CHOL'</span>: [chol],</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CREA'</span>: [crea],</span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GGT'</span>: [ggt],</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PROT'</span>: [prot]</span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalisasi input features</span></span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Hanya fit scaler pada fitur yang bukan data biner</span></span>
+<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a>non_binary_columns <span class="op">=</span> [col <span class="cf">for</span> col <span class="kw">in</span> input_features.columns <span class="cf">if</span> col <span class="op">!=</span> <span class="st">'Sex'</span>]</span>
+<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a>scaler.fit(input_features[non_binary_columns])</span>
+<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformasi data (hanya pada fitur non-biner)</span></span>
+<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a>input_features_scaled <span class="op">=</span> input_features.copy()</span>
+<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>input_features_scaled[non_binary_columns] <span class="op">=</span> scaler.transform(input_features[non_binary_columns])</span>
+<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Melakukan prediksi dengan model KNN</span></span>
+<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>hasil_prediksi <span class="op">=</span> loaded_svm_model.predict(input_features_scaled)[<span class="dv">0</span>]</span>
+<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan hasil prediksi</span></span>
+<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hasil Prediksi Kategori:"</span>, hasil_prediksi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Masukkan nilai Age: 32
+Masukkan nilai Sex: (0 untuk pria, 1 untuk wanita) 1
+Masukkan nilai ALB: 56
+Masukkan nilai ALP: 88
+Masukkan nilai ALT: 90
+Masukkan nilai AST: 88
+Masukkan nilai BIL: 123
+Masukkan nilai CHE: 750
+Masukkan nilai CHOL: 34
+Masukkan nilai CREA: 88
+Masukkan nilai GGT: 99
+Masukkan nilai PROT: 121
+Hasil Prediksi Kategori: 0=Blood Donor</code></pre>
+</div>
+</div>
+</section>
+<section id="deployment" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> <strong>Deployment</strong></h1>
+<p>Link streamlit: <a href="https://firda-psd-b6dvrefb27vhg9ukzdkvy6.streamlit.app/">Hepatitis C</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_audio.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Prediksi Audio</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
